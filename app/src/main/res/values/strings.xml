@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Tourist Info App</string>
     <string name="login_page">Log in </string>
-    <string name="user_nme">User Name</string>
-    <string name="password">Password</string>
+    <string name="user_nme">username</string>
+    <string name="password">password</string>
     <string name="login">Login</string>
     <string name="about_city">About City :</string>
     <string name="famous_places">Famous Places</string>

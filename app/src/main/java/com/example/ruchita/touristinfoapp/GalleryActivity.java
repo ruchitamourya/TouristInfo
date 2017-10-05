@@ -26,7 +26,7 @@ public class GalleryActivity extends AppCompatActivity {
 
         viewPager = (ViewPager)findViewById(R.id.view_pager);
         Gson gson = new Gson();
-        String data = getIntent().getStringExtra(CityDetailPageActivity.CITY_KEY);
+        String data = getIntent().getStringExtra(Constants.FAMOUSPLACES_DATA);
         City city = gson.fromJson(data,City.class);
         adapter = new ViewPagerAdapter(this,city.getFamousPlaceList());
         viewPager.setAdapter(adapter);

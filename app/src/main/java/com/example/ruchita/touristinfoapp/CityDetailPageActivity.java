@@ -18,7 +18,6 @@ public class CityDetailPageActivity extends AppCompatActivity implements View.On
     private Button famous_places;
     private Button gallery;
 
-    public static final String CITY_KEY = "city_key";
     String data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +37,7 @@ public class CityDetailPageActivity extends AppCompatActivity implements View.On
 
     public void populateData() {
         Gson gson = new Gson();
-         data = getIntent().getStringExtra("key");
+         data = getIntent().getStringExtra(Constants.CITY_DATA);
         City city = gson.fromJson(data, City.class);
         city_image.setImageResource(city.getCityDetail().getImageId());
         city_details.setText(city.getCityDetail().getDescription());
@@ -48,11 +47,11 @@ public class CityDetailPageActivity extends AppCompatActivity implements View.On
     public void onClick(View v) {
         if (v.getId() == R.id.famous_places) {
             Intent intent = new Intent(CityDetailPageActivity.this, FamousPlacesActivity.class);
-            intent.putExtra(CITY_KEY,data);
+            intent.putExtra(Constants.FAMOUSPLACES_DATA,data);
             startActivity(intent);
         } else if (v.getId() == R.id.gallery) {
             Intent intent = new Intent(CityDetailPageActivity.this, GalleryActivity.class);
-            intent.putExtra(CITY_KEY,data);
+            intent.putExtra(Constants.FAMOUSPLACES_DATA,data);
             startActivity(intent);
         }
     }

@@ -58,7 +58,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="280dp"
+            android:layout_marginTop="270dp"
             android:text="register"
             android:layout_marginLeft="40dp"
             android:textColor="@android:color/darker_gray"
@@ -67,7 +67,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="280dp"
+            android:layout_marginTop="270dp"
             android:text="forget password "
             android:layout_marginLeft="110dp"
             android:textColor="@android:color/darker_gray"

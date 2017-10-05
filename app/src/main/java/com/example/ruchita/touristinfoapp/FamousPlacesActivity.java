@@ -25,7 +25,7 @@ public class FamousPlacesActivity extends AppCompatActivity implements View.OnCl
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView2);
         Gson gson = new Gson();
-        String data = getIntent().getStringExtra(CityDetailPageActivity.CITY_KEY);
+        String data = getIntent().getStringExtra(Constants.FAMOUSPLACES_DATA);
         City city = gson.fromJson(data,City.class);
         FamousPlacesAdapter adapter = new FamousPlacesAdapter(this, city.getFamousPlaceList());
         recyclerView.setAdapter(adapter);

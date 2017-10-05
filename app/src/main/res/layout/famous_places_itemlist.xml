@@ -31,15 +31,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="17dp"
                 android:text="title"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                 />
 
             <TextView
                 android:id="@+id/famous_places_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
+                android:textColor="@android:color/black"
                 android:text="description"
                 android:textSize="16sp"
                 android:textStyle="italic" />

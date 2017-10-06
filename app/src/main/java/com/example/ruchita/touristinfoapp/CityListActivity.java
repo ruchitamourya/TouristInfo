@@ -18,7 +18,7 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
-public class CityListActivity extends AppCompatActivity  {
+public class CityListActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager;
 
@@ -27,24 +27,19 @@ public class CityListActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_list);
         fragmentManager = getFragmentManager();
-        addCityNameRecyclerView();
+        addCityNameFragment();
+
 
     }
 
-    public void addCityNameRecyclerView(){
+    public void addCityNameFragment() {
 
         CityNameRecyclerViewFragment cityNameRecyclerViewFragment = new CityNameRecyclerViewFragment();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.container,cityNameRecyclerViewFragment,Constants.FRAGMENT);
-        transaction.addToBackStack(Constants.FRAGMENT);
+        transaction.replace(R.id.container, cityNameRecyclerViewFragment, Constants.FRAGMENT);
         transaction.commit();
 
     }
-
-
-
-
-
 
 
 }

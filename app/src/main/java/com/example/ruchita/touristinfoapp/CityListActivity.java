@@ -1,20 +1,10 @@
 package com.example.ruchita.touristinfoapp;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.Intent;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
-import com.example.ruchita.touristinfoapp.Adapter.CityGridAdapter;
-import com.example.ruchita.touristinfoapp.Model.City;
-import com.example.ruchita.touristinfoapp.Model.TestData;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -26,7 +16,7 @@ public class CityListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_list);
-        fragmentManager = getFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         addCityNameFragment();
 
 
@@ -40,8 +30,6 @@ public class CityListActivity extends AppCompatActivity {
         transaction.commit();
 
     }
-
-
 }
 
 

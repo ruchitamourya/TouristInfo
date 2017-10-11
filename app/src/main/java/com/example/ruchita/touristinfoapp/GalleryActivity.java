@@ -31,37 +31,4 @@ public class GalleryActivity extends AppCompatActivity {
         adapter = new ViewPagerAdapter(this,city.getFamousPlaceList());
         viewPager.setAdapter(adapter);
     }
-
-    public static class MainActivity extends AppCompatActivity implements View.OnClickListener{
-
-        private Button button_login;
-        private EditText user_name;
-        private EditText password;
-        private GridView gridView;
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-            button_login = (Button)findViewById(R.id.button_login);
-            user_name = (EditText)findViewById(R.id.user_name);
-            password = (EditText)findViewById(R.id.password);
-
-
-            button_login.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(MainActivity.this, CityListActivity.class);
-            if(user_name.getText().toString().equals("user") &&
-            password.getText().toString().equals("1234")) {
-                startActivity(intent);
-            }
-            else {
-                Toast.makeText(MainActivity.this,"username or password is wrong",Toast.LENGTH_SHORT).show();
-            }
-
-        }
-    }
 }

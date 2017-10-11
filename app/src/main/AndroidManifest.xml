@@ -8,17 +8,19 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.ruchita.touristinfoapp.GalleryActivity$MainActivity">
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+        <activity android:name=".GalleryActivity$MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.ruchita.touristinfoapp.CityListActivity" />
-        <activity android:name="com.example.ruchita.touristinfoapp.CityDetailPageActivity" />
-        <activity android:name="com.example.ruchita.touristinfoapp.FamousPlacesActivity" />
-        <activity android:name="com.example.ruchita.touristinfoapp.GalleryActivity"></activity>
+        <activity android:name=".CityListActivity" />
+        <activity android:name=".CityDetailPageActivity" />
+        <activity android:name=".FamousPlacesActivity" />
+        <activity android:name=".GalleryActivity" />
+        <activity android:name=".AddImagesActivity"></activity>
     </application>
 
 </manifest>

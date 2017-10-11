@@ -8,4 +8,8 @@
     <string name="famous_places">Famous Places</string>
     <string name="gallery">Gallery</string>
     <string name="description">Description</string>
+    <string name="city">City :</string>
+    <string name="enter_city_name">enter city name</string>
+    <string name="save">save</string>
+    <string name="add_images">add images</string>
 </resources>

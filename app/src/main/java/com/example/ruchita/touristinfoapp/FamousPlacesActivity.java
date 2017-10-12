@@ -1,26 +1,45 @@
 package com.example.ruchita.touristinfoapp;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.ruchita.touristinfoapp.Adapter.FamousPlacesAdapter;
 import com.example.ruchita.touristinfoapp.Model.City;
 import com.google.gson.Gson;
 
-public class FamousPlacesActivity extends AppCompatActivity implements View.OnClickListener{
+public class FamousPlacesActivity extends AppCompatActivity implements View.OnClickListener,Toolbar.OnMenuItemClickListener{
 
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_famous_places);
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.showOverflowMenu();
+        getSupportActionBar().setTitle("Tourist Info App ");
+        toolbar.setOnMenuItemClickListener(this);
+
         setUpRecyclerView();
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
     private void setUpRecyclerView() {
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView2);
@@ -41,6 +60,21 @@ public class FamousPlacesActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        onLogout();
+        return false;
+    }
+
+    public void onLogout(){
+        Intent intent = new Intent(this,SplashActivity.class);
+        SharedPreferences sharedPreferences = getSharedPreferences(Constants.SHARED_PREF_KEY, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(Constants.IS_LOGGED_IN, false);
+        editor.apply();
+        startActivity(intent);
     }
 }
 

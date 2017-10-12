@@ -5,6 +5,10 @@
     android:layout_height="match_parent"
     tools:context="com.example.ruchita.touristinfoapp.CityListActivity">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"

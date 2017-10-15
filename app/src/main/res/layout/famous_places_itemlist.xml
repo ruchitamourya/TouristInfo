@@ -29,8 +29,8 @@
                 android:id="@+id/famous_places_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="17dp"
-                android:text="title"
+                android:layout_marginStart="17dp"
+                android:text="@string/title"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                  />
@@ -39,9 +39,9 @@
                 android:id="@+id/famous_places_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:textColor="@android:color/black"
-                android:text="description"
+                android:text="@string/description"
                 android:textSize="16sp"
                 android:textStyle="italic" />
 
@@ -52,7 +52,6 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_margin="13dp"
-            android:onClick="goToGoogleMap"
             android:src="@drawable/google_map_image"/>
 
     </LinearLayout>

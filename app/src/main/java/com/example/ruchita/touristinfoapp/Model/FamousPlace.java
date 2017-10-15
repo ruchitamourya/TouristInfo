@@ -9,7 +9,8 @@ public class FamousPlace {
     private String title;
     private String description;
     private int imgResourceId;
-    private int googleImgResourceId;
+    private double latitude;
+    private double longitude;
 
     public String getTitle() {
         return title;
@@ -35,11 +36,20 @@ public class FamousPlace {
         this.imgResourceId = imgResourceId;
     }
 
-    public int getGoogleImgResourceId() {
-        return googleImgResourceId;
+
+    public double getLatitude() {
+        return latitude;
     }
 
-    public void setGoogleImgResourceId(int googleImgResourceId) {
-        this.googleImgResourceId = googleImgResourceId;
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 }

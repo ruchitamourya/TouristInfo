@@ -13,4 +13,6 @@
     <string name="save">save</string>
     <string name="add_images">add images</string>
     <string name="logout">Logout</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title">title</string>
 </resources>

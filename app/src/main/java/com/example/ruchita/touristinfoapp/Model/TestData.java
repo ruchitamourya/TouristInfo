@@ -97,7 +97,7 @@ public class TestData {
     public static ArrayList<ArrayList<FamousPlace>> getFamousPlacesData(){
         ArrayList<ArrayList<FamousPlace>>listOfData = new ArrayList<>();
 
-        int [] []famousPlacesOfDelhi = {{R.drawable.delhi_image1,R.drawable.delhi_image2,R.drawable.delhi_image3
+        int [] []famousPlacesOfCities = {{R.drawable.delhi_image1,R.drawable.delhi_image2,R.drawable.delhi_image3
         ,R.drawable.delhi_image4,R.drawable.delhi_image5,R.drawable.delhi_image6,R.drawable.delhi_image6,
                 R.drawable.delhi_image6},{R.drawable.gateway_of_india,R.drawable.delhi_image5,R.drawable.delhi_image5,
                 R.drawable.delhi_image5,R.drawable.delhi_image5,R.drawable.delhi_image5,R.drawable.delhi_image5
@@ -124,14 +124,26 @@ public class TestData {
                 {"","","","","","","",""},{"","","","","","","",""},{"","","","","","","",""},
                 {"","","","","","","",""},{"","","","","","","",""}};
 
+        double[][] latitude = {{28.6562,28.6162,28.6127,28.5535,28.6507,28.6271,28.6507,28.6271},{28.6562,28.6162,28.6127,28.5535,28.6507,28.6271,28.6507,28.6271},
+                {28.6562,28.6162,28.6127,28.5535,28.6507,28.6271,28.6507,28.6271},{28.6562,28.6162,28.6127,28.5535,28.6507,28.6271,28.6507,28.6271},
+                {28.6562,28.6162,28.6127,28.5535,28.6507,28.6271,28.6507,28.6271},{28.6562,28.6162,28.6127,28.5535,28.6507,28.6271,28.6507,28.6271},
+                {28.6562,28.6162,28.6127,28.5535,28.6507,28.6271,28.6507,28.6271},{28.6562,28.6162,28.6127,28.5535,28.6507,28.6271,28.6507,28.6271}};
+
+        double[][] longitude = {{77.2410,77.2295,77.2773,77.2588,77.2334,77.2166,77.2334,77.2166},{77.2410,77.2295,77.2773,77.2588,77.2334,77.2166,77.2334,77.2166},
+                {77.2410,77.2295,77.2773,77.2588,77.2334,77.2166,77.2334,77.2166},{77.2410,77.2295,77.2773,77.2588,77.2334,77.2166,77.2334,77.2166},
+                {77.2410,77.2295,77.2773,77.2588,77.2334,77.2166,77.2334,77.2166},{77.2410,77.2295,77.2773,77.2588,77.2334,77.2166,77.2334,77.2166},
+                {77.2410,77.2295,77.2773,77.2588,77.2334,77.2166,77.2334,77.2166},{77.2410,77.2295,77.2773,77.2588,77.2334,77.2166,77.2334,77.2166}};
+
         for (int i= 0; i<description.length; i++) {
             {
                 ArrayList<FamousPlace> innerList = new ArrayList<>();
                 for (int j = 0; j < description.length; j++) {
                     FamousPlace famousPlace = new FamousPlace();
-                    famousPlace.setImgResourceId(famousPlacesOfDelhi[i][j]);
+                    famousPlace.setImgResourceId(famousPlacesOfCities[i][j]);
                     famousPlace.setDescription(description[i][j]);
                     famousPlace.setTitle(title[i][j]);
+                    famousPlace.setLatitude(latitude[i][j]);
+                    famousPlace.setLongitude(longitude[i][j]);
                     innerList.add(famousPlace);
                 }
                 listOfData.add(innerList);

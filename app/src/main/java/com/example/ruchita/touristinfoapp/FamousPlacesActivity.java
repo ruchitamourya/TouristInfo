@@ -14,9 +14,10 @@ import android.view.View;
 
 import com.example.ruchita.touristinfoapp.Adapter.FamousPlacesAdapter;
 import com.example.ruchita.touristinfoapp.Model.City;
+import com.example.ruchita.touristinfoapp.Model.FamousPlace;
 import com.google.gson.Gson;
 
-public class FamousPlacesActivity extends AppCompatActivity implements View.OnClickListener,Toolbar.OnMenuItemClickListener{
+public class FamousPlacesActivity extends AppCompatActivity implements ItemClickListenerOfFamousPlace,Toolbar.OnMenuItemClickListener{
 
     private Toolbar toolbar;
     @Override
@@ -46,7 +47,7 @@ public class FamousPlacesActivity extends AppCompatActivity implements View.OnCl
         Gson gson = new Gson();
         String data = getIntent().getStringExtra(Constants.FAMOUSPLACES_DATA);
         City city = gson.fromJson(data,City.class);
-        FamousPlacesAdapter adapter = new FamousPlacesAdapter(this, city.getFamousPlaceList());
+        FamousPlacesAdapter adapter = new FamousPlacesAdapter(this, this,city.getFamousPlaceList());
         recyclerView.setAdapter(adapter);
 
         LinearLayoutManager mLinearLayoutManagerVertical = new LinearLayoutManager(this);
@@ -58,22 +59,27 @@ public class FamousPlacesActivity extends AppCompatActivity implements View.OnCl
     }
 
     @Override
-    public void onClick(View v) {
-
-    }
-
-    @Override
     public boolean onMenuItemClick(MenuItem item) {
         onLogout();
         return false;
     }
 
-    public void onLogout(){
-        Intent intent = new Intent(this,SplashActivity.class);
+    public void onLogout() {
+        Intent intent = new Intent(this, SplashActivity.class);
         SharedPreferences sharedPreferences = getSharedPreferences(Constants.SHARED_PREF_KEY, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(Constants.IS_LOGGED_IN, false);
         editor.apply();
+        startActivity(intent);
+    }
+
+    @Override
+    public void onItemClick(View view, FamousPlace famousPlace) {
+        Intent intent = new Intent(this,MapsActivity.class);
+        double lat = famousPlace.getLatitude();
+        double log = famousPlace.getLongitude();
+        intent.putExtra("lat",lat);
+        intent.putExtra("log",log);
         startActivity(intent);
     }
 }

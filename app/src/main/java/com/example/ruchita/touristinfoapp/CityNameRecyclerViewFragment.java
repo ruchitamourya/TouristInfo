@@ -13,8 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ruchita.touristinfoapp.Adapter.CityGridAdapter;
+import com.example.ruchita.touristinfoapp.Data.DataProvider;
 import com.example.ruchita.touristinfoapp.Model.City;
-import com.example.ruchita.touristinfoapp.Model.TestData;
+import com.example.ruchita.touristinfoapp.Data.TestData;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -25,6 +26,11 @@ import java.util.ArrayList;
 
 public class CityNameRecyclerViewFragment extends Fragment implements ItemClickListener{
     private FragmentManager fragmentManager;
+    private DataProvider dataProvider;
+
+    public CityNameRecyclerViewFragment(){
+        dataProvider = TestData.Instance;
+    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.city_name_recyclerview_fragment,container,false);
@@ -37,7 +43,7 @@ public class CityNameRecyclerViewFragment extends Fragment implements ItemClickL
     private void setUpRecyclerView(View v) {
 
         RecyclerView recyclerView = (RecyclerView)v.findViewById(R.id.recyclerView);
-        ArrayList<City> data = TestData.prepareCityList();
+        ArrayList<City> data = dataProvider.getCities();
         CityGridAdapter adapter = new CityGridAdapter(getActivity(), this, data);
 
         recyclerView.setAdapter(adapter);

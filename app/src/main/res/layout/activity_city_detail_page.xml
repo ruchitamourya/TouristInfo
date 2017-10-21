@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_weight="1"
-            android:background="@color/colorTransparent3"
+            android:background="@color/colorTransparent1"
             android:padding="10dp"
             android:text="@string/famous_places"
             android:textColor="@android:color/black"
@@ -44,17 +44,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linear_layout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/linearLayout"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginEnd="320dp"
-        android:layout_marginTop="89dp"
-        android:orientation="vertical">
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -85,6 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="@string/description"
-            android:textSize="17sp" />
+            android:textSize="17sp"
+            android:textColor="@android:color/black"/>
     </LinearLayout>
 </RelativeLayout>

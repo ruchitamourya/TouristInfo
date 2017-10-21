@@ -69,8 +69,8 @@ public class AddNewCityFragment extends Fragment {
             assert cursor != null;
             cursor.moveToFirst();
 
-            int colunmIndex = cursor.getColumnIndex(filePathColumn[0]);
-            imgDecodableString = cursor.getString(colunmIndex);
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            imgDecodableString = cursor.getString(columnIndex);
             cursor.close();
 
             add_img.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));

@@ -42,7 +42,7 @@ public class CityGridAdapter extends RecyclerView.Adapter<CityNameViewHolder> {
     public void onBindViewHolder(CityNameViewHolder holder, int position) {
         City currentObj = mData.get(position);
         if (position == 0 || position == 3 || position == 4 || position == 7 || position == 8) {
-            holder.cardView.setCardBackgroundColor(mContext.getResources().getColor(R.color.colorTransparent3));
+            holder.cardView.setCardBackgroundColor(mContext.getResources().getColor(R.color.colorTransparent1));
         } else {
             holder.cardView.setCardBackgroundColor(mContext.getResources().getColor(R.color.colorTransparent2));
         }

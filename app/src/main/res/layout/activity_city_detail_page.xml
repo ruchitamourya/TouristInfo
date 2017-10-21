@@ -56,8 +56,11 @@
             android:id="@+id/city_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/delhi" />
+            android:maxHeight="200dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/city" />
 
         <TextView
             android:layout_width="wrap_content"

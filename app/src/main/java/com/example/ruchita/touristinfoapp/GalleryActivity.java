@@ -1,22 +1,20 @@
 package com.example.ruchita.touristinfoapp;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.GridView;
-import android.widget.Toast;
 
 import com.example.ruchita.touristinfoapp.Adapter.ViewPagerAdapter;
+import com.example.ruchita.touristinfoapp.Data.CommonUtils;
+import com.example.ruchita.touristinfoapp.Data.ImageUtils;
 import com.example.ruchita.touristinfoapp.Model.City;
 import com.google.gson.Gson;
+
+import java.util.List;
 
 public class GalleryActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener {
 
@@ -27,18 +25,17 @@ public class GalleryActivity extends AppCompatActivity implements Toolbar.OnMenu
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery);
-
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.showOverflowMenu();
-        getSupportActionBar().setTitle("Tourist Info App ");
-        toolbar.setOnMenuItemClickListener(this);
-
-        viewPager = (ViewPager)findViewById(R.id.view_pager);
         Gson gson = new Gson();
         String data = getIntent().getStringExtra(Constants.FAMOUSPLACES_DATA);
         City city = gson.fromJson(data,City.class);
-        adapter = new ViewPagerAdapter(this,city.getFamousPlaceList());
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.showOverflowMenu();
+        getSupportActionBar().setTitle(city.getCityName());
+        toolbar.setOnMenuItemClickListener(this);
+        List<Bitmap> imageList = ImageUtils.getGalleryImages(this.getApplicationContext(), city);
+        viewPager = (ViewPager)findViewById(R.id.view_pager);
+        adapter = new ViewPagerAdapter(this, imageList);
         viewPager.setAdapter(adapter);
     }
 
@@ -50,16 +47,7 @@ public class GalleryActivity extends AppCompatActivity implements Toolbar.OnMenu
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        onLogout();
+        CommonUtils.logout(this);
         return false;
-    }
-
-    public void onLogout(){
-        Intent intent = new Intent(this,SplashActivity.class);
-        SharedPreferences sharedPreferences = getSharedPreferences(Constants.SHARED_PREF_KEY, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean(Constants.IS_LOGGED_IN, false);
-        editor.apply();
-        startActivity(intent);
     }
 }

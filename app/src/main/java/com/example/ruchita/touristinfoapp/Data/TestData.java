@@ -14,16 +14,15 @@ import java.util.ArrayList;
 
 public class TestData implements DataProvider {
 
-    public static TestData Instance = new TestData();
     private static ArrayList<City> data;
 
-    private TestData(){
+    public TestData(){
         data = prepareCityList();
     }
 
     private static ArrayList<City> prepareCityList() {
         ArrayList<City> cityArray = new ArrayList<>();
-        String[] cities = {"delhi", "mumbai", "hyderabad", "chennai", "kolkata", "lucknow",
+        String[] cities = {"Delhi", "Mumbai", "Hyderabad", "Chennai", "Kolkata", "Lucknow",
                 "Ahmedabad", "Bangalore"};
 
         ArrayList<CityDetail> cityDetailArrayList = getData();
@@ -34,8 +33,10 @@ public class TestData implements DataProvider {
             city.setCityName(cities[i]);
             CityDetail cityDetail = cityDetailArrayList.get(i);
             city.setCityDetail(cityDetail);
-            ArrayList<FamousPlace> famousPlace = famousPlacesArrayList.get(i);
-            city.setFamousPlaceList(famousPlace);
+            if(famousPlacesArrayList.size() > i) {
+                ArrayList<FamousPlace> famousPlace = famousPlacesArrayList.get(i);
+                city.setFamousPlaceList(famousPlace);
+            }
             cityArray.add(city);
         }
         City city = new City();
@@ -53,7 +54,6 @@ public class TestData implements DataProvider {
 
         for (int i = 0; i < images.length; i++) {
             CityDetail cityDetail = new CityDetail();
-            cityDetail.setImageId(images[i]);
             cityDetail.setDescription(desc[i]);
             dataList.add(cityDetail);
         }
@@ -61,7 +61,7 @@ public class TestData implements DataProvider {
     }
 
     private static int[] getImages() {
-        int[] images = {R.drawable.delhi, R.drawable.mumbai, R.drawable.hyderabad, R.drawable.chennai,
+        int[] images = {0, R.drawable.mumbai, R.drawable.hyderabad, R.drawable.chennai,
                 R.drawable.kolkata, R.drawable.lucknow, R.drawable.ahmedabad, R.drawable.bangalor,};
         return images;
     }
@@ -111,45 +111,23 @@ public class TestData implements DataProvider {
                 , R.drawable.delhi_image4, R.drawable.delhi_image5, R.drawable.delhi_image6, R.drawable.delhi_image6,
                 R.drawable.delhi_image6}, {R.drawable.gateway_of_india, R.drawable.delhi_image5, R.drawable.delhi_image5,
                 R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5
-                , R.drawable.delhi_image5}, {R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5,
-                R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5
-                , R.drawable.delhi_image5}, {R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5,
-                R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5
-                , R.drawable.delhi_image5}, {R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5,
-                R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5
-                , R.drawable.delhi_image5}, {R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5,
-                R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5
-                , R.drawable.delhi_image5}, {R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5,
-                R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5
-                , R.drawable.delhi_image5}, {R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5,
-                R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5
                 , R.drawable.delhi_image5}};
 
-        String[][] description = {{"1", "2", "3", "4", "5", "6", "7", "8"}, {"", "", "", "", "", "", "", ""}, {"", "", "", "", "", "", "", ""},
-                {"", "", "", "", "", "", "", ""}, {"", "", "", "", "", "", "", ""}, {"", "", "", "", "", "", "", ""},
-                {"", "", "", "", "", "", "", ""}, {"", "", "", "", "", "", "", ""}};
+        String[][] description = {{"1", "2", "3", "4", "5", "6", "7", "8"}, {"", "", "", "", "", "", "", ""}};
 
         String[][] title = {{"Red Fort", "India Gate", "Akshardham", "Lotus Temple", "Jama Masjid",
-                "Jantar-Mantar", "title7", "title8"}, {"", "", "", "", "", "", "", ""}, {"", "", "", "", "", "", "", ""},
-                {"", "", "", "", "", "", "", ""}, {"", "", "", "", "", "", "", ""}, {"", "", "", "", "", "", "", ""},
-                {"", "", "", "", "", "", "", ""}, {"", "", "", "", "", "", "", ""}};
+                "Jantar Mantar", "title7", "title8"}, {"", "", "", "", "", "", "", ""}};
 
-        double[][] latitude = {{28.6562, 28.6162, 28.6127, 28.5535, 28.6507, 28.6271, 28.6507, 28.6271}, {28.6562, 28.6162, 28.6127, 28.5535, 28.6507, 28.6271, 28.6507, 28.6271},
-                {28.6562, 28.6162, 28.6127, 28.5535, 28.6507, 28.6271, 28.6507, 28.6271}, {28.6562, 28.6162, 28.6127, 28.5535, 28.6507, 28.6271, 28.6507, 28.6271},
-                {28.6562, 28.6162, 28.6127, 28.5535, 28.6507, 28.6271, 28.6507, 28.6271}, {28.6562, 28.6162, 28.6127, 28.5535, 28.6507, 28.6271, 28.6507, 28.6271},
-                {28.6562, 28.6162, 28.6127, 28.5535, 28.6507, 28.6271, 28.6507, 28.6271}, {28.6562, 28.6162, 28.6127, 28.5535, 28.6507, 28.6271, 28.6507, 28.6271}};
+        double[][] latitude = {{28.6562, 28.6162, 28.6127, 28.5535, 28.6507, 28.6271, 28.6507, 28.6271}, {28.6562, 28.6162, 28.6127, 28.5535, 28.6507, 28.6271, 28.6507, 28.6271}};
 
-        double[][] longitude = {{77.2410, 77.2295, 77.2773, 77.2588, 77.2334, 77.2166, 77.2334, 77.2166}, {77.2410, 77.2295, 77.2773, 77.2588, 77.2334, 77.2166, 77.2334, 77.2166},
-                {77.2410, 77.2295, 77.2773, 77.2588, 77.2334, 77.2166, 77.2334, 77.2166}, {77.2410, 77.2295, 77.2773, 77.2588, 77.2334, 77.2166, 77.2334, 77.2166},
-                {77.2410, 77.2295, 77.2773, 77.2588, 77.2334, 77.2166, 77.2334, 77.2166}, {77.2410, 77.2295, 77.2773, 77.2588, 77.2334, 77.2166, 77.2334, 77.2166},
-                {77.2410, 77.2295, 77.2773, 77.2588, 77.2334, 77.2166, 77.2334, 77.2166}, {77.2410, 77.2295, 77.2773, 77.2588, 77.2334, 77.2166, 77.2334, 77.2166}};
+        double[][] longitude = {{77.2410, 77.2295, 77.2773, 77.2588, 77.2334, 77.2166, 77.2334, 77.2166}, {77.2410, 77.2295, 77.2773, 77.2588, 77.2334, 77.2166, 77.2334, 77.2166}};
 
         for (int i = 0; i < description.length; i++) {
             {
                 ArrayList<FamousPlace> innerList = new ArrayList<>();
-                for (int j = 0; j < description.length; j++) {
+                for (int j = 0; j < description[0].length; j++) {
                     FamousPlace famousPlace = new FamousPlace();
-                    famousPlace.setImgResourceId(famousPlacesOfCities[i][j]);
+                    //famousPlace.setImgResourceId(famousPlacesOfCities[i][j]);
                     famousPlace.setDescription(description[i][j]);
                     famousPlace.setTitle(title[i][j]);
                     famousPlace.setLatitude(latitude[i][j]);
@@ -173,12 +151,12 @@ public class TestData implements DataProvider {
     }
 
     @Override
-    public String addCity(City city) {
+    public void addCity(City city) {
         throw new UnsupportedOperationException("Readonly data source being used");
     }
 
     @Override
-    public String deleteCity(City city) {
+    public void deleteCity(City city) {
         throw new UnsupportedOperationException("Readonly data source being used");
     }
 }

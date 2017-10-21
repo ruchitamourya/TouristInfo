@@ -1,17 +1,14 @@
 package com.example.ruchita.touristinfoapp;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
-import java.util.ArrayList;
+import com.example.ruchita.touristinfoapp.Data.CommonUtils;
 
 public class CityListActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener {
 
@@ -27,7 +24,7 @@ public class CityListActivity extends AppCompatActivity implements Toolbar.OnMen
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.showOverflowMenu();
-        getSupportActionBar().setTitle("Tourist Info App ");
+        getSupportActionBar().setTitle("Cities");
         toolbar.setOnMenuItemClickListener(this);
 
     }
@@ -39,27 +36,16 @@ public class CityListActivity extends AppCompatActivity implements Toolbar.OnMen
     }
 
     public void addCityNameFragment() {
-
         CityNameRecyclerViewFragment cityNameRecyclerViewFragment = new CityNameRecyclerViewFragment();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.container, cityNameRecyclerViewFragment, Constants.FRAGMENT);
         transaction.commit();
-
     }
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        onLogout();
+        CommonUtils.logout(this);
         return false;
-    }
-
-    public void onLogout(){
-        Intent intent = new Intent(this,SplashActivity.class);
-        SharedPreferences sharedPreferences = getSharedPreferences(Constants.SHARED_PREF_KEY, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean(Constants.IS_LOGGED_IN, false);
-        editor.apply();
-        startActivity(intent);
     }
 }
 

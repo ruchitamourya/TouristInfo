@@ -4,8 +4,8 @@
     <item android:drawable="@color/colorPrimary" />
 
     <item>
-        <bitmap android:src="@drawable/tourism_logo2"
-            android:gravity="center" />
+        <bitmap android:src="@drawable/gradient"
+            android:gravity="fill" />
 
     </item>
 

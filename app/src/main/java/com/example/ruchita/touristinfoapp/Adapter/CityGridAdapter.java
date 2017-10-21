@@ -32,7 +32,6 @@ public class CityGridAdapter extends RecyclerView.Adapter<CityNameViewHolder> {
 
     @Override
     public CityNameViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View view = mInflater.inflate(R.layout.grid_item_layout, parent, false);
         CityNameViewHolder cityNameViewHolder = new CityNameViewHolder(view, mItemClickListener);
         return cityNameViewHolder;
@@ -41,12 +40,21 @@ public class CityGridAdapter extends RecyclerView.Adapter<CityNameViewHolder> {
     @Override
     public void onBindViewHolder(CityNameViewHolder holder, int position) {
         City currentObj = mData.get(position);
-        if (position == 0 || position == 3 || position == 4 || position == 7 || position == 8) {
+        if (isRed(position)) {
             holder.cardView.setCardBackgroundColor(mContext.getResources().getColor(R.color.colorTransparent1));
         } else {
             holder.cardView.setCardBackgroundColor(mContext.getResources().getColor(R.color.colorTransparent2));
         }
         holder.setData(currentObj);
+    }
+
+    private boolean isRed(int position) {
+        int i = position % 4;
+        if(i == 0 || i == 3){
+            return true;
+        }else {
+            return false;
+        }
     }
 
     @Override

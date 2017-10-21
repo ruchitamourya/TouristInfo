@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 
 public class City {
+    private String cityId;
     private String cityName;
     private CityDetail cityDetail;
     private ArrayList<FamousPlace >famousPlaceList;
@@ -34,6 +35,14 @@ public class City {
 
     public void setFamousPlaceList(ArrayList<FamousPlace> famousPlaceList) {
         this.famousPlaceList = famousPlaceList;
+    }
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
     }
 }
 

@@ -11,6 +11,6 @@ import java.util.ArrayList;
 public interface DataProvider {
     ArrayList<City> getCities();
     String updateCity(City city);
-    String addCity(City city);
-    String deleteCity(City city);
+    void addCity(City city);
+    void deleteCity(City city);
 }

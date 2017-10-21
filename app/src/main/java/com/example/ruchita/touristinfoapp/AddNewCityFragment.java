@@ -4,36 +4,46 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.ruchita.touristinfoapp.Data.ImageUtils;
+import com.example.ruchita.touristinfoapp.Data.InternalStorage;
+import com.example.ruchita.touristinfoapp.Model.City;
+import com.example.ruchita.touristinfoapp.Model.CityDetail;
+
+import java.util.UUID;
+
 import static android.app.Activity.RESULT_OK;
-import static android.os.Build.VERSION_CODES.N;
 
 /**
  * Created by ruchita on 4/10/17.
  */
 
-public class AddNewCityFragment extends Fragment {
+public class AddNewCityFragment extends Fragment implements View.OnClickListener {
 
     private static final int RESULT_LOAD_IMAGE = 1;
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 0;
     private Button btn_add_img;
     private ImageView add_img;
+    private Button saveData;
+    private EditText cityName;
+    private EditText cityDetails;
     private String imgDecodableString;
+    private Bitmap bitmap;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,15 +51,11 @@ public class AddNewCityFragment extends Fragment {
 
         add_img = (ImageView) view.findViewById(R.id.add_img);
         btn_add_img = (Button) view.findViewById(R.id.btn_add_img);
-        btn_add_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean permissionAlreadyGranted = checkPermission();
-                if(permissionAlreadyGranted) {
-                    openGallery();
-                }
-            }
-        });
+        btn_add_img.setOnClickListener(this);
+        saveData = (Button) view.findViewById(R.id.btn_save);
+        saveData.setOnClickListener(this);
+        cityName = (EditText) view.findViewById(R.id.city_name);
+        cityDetails = (EditText) view.findViewById(R.id.city_detail);
         return view;
     }
 
@@ -72,8 +78,8 @@ public class AddNewCityFragment extends Fragment {
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
             imgDecodableString = cursor.getString(columnIndex);
             cursor.close();
-
-            add_img.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
+            bitmap = BitmapFactory.decodeFile(imgDecodableString);
+            add_img.setImageBitmap(bitmap);
         } else {
             Toast.makeText(getActivity(), "You haven't picked Image", Toast.LENGTH_LONG).show();
         }
@@ -126,4 +132,49 @@ public class AddNewCityFragment extends Fragment {
         }
     }
 
-  }
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.btn_add_img) {
+            boolean permissionAlreadyGranted = checkPermission();
+            if (permissionAlreadyGranted) {
+                openGallery();
+            }
+        }else if(v.getId() == R.id.btn_save){
+            boolean valid = validate();
+            if(valid) {
+                saveData.setOnClickListener(null);
+                addCity();
+                goBack();
+            }
+        }
+    }
+
+    private boolean validate() {
+        if(cityName.getText().length() == 0 || cityDetails.getText().length() == 0 || bitmap == null){
+            Toast.makeText(this.getContext(), "'City', 'About City' and 'Image' can't be empty.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private void goBack() {
+        FragmentManager manager = getFragmentManager();
+        if(manager.getBackStackEntryCount() > 0){
+            manager.popBackStack();
+        }
+    }
+
+    private void addCity() {
+        City city = new City();
+        String id = UUID.randomUUID().toString();
+        id = id.replace("-","");
+        city.setCityId(id);
+        city.setCityName(cityName.getText().toString());
+        CityDetail cityDetail = new CityDetail();
+        cityDetail.setDescription(cityDetails.getText().toString());
+        city.setCityDetail(cityDetail);
+        String path = ImageUtils.saveCityImage(this.getContext(), city, bitmap);
+        cityDetail.setImagePath(path);
+        InternalStorage.getInstance(this.getContext()).addCity(city);
+    }
+}

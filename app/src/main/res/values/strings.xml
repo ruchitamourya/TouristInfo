@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Tourist Info App</string>
     <string name="login_page">Log in </string>
-    <string name="user_nme">username</string>
+    <string name="user_name">username</string>
     <string name="password">password</string>
     <string name="login">Login</string>
     <string name="about_city">About City :</string>
@@ -9,7 +9,7 @@
     <string name="gallery">Gallery</string>
     <string name="description">Description</string>
     <string name="city">City :</string>
-    <string name="enter_city_name">enter city name</string>
+    <string name="city_name">city name</string>
     <string name="save">save</string>
     <string name="add_images">add images</string>
     <string name="logout">Logout</string>

@@ -34,9 +34,16 @@ import static android.app.Activity.RESULT_OK;
  */
 
 public class AddNewCityFragment extends Fragment implements View.OnClickListener {
-
+    /*
+    @Constant RESULT_LOAD_IMAGE an int type constant to hold an int value.
+    @Constant MY_PERMISSION_REQUEST_READ_EXTERNAL_STORAGE an int constant to hold an int value.
+     */
     private static final int RESULT_LOAD_IMAGE = 1;
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 0;
+    /*
+    @Button btn_add_img a button type variable.
+    @ImageView add_img a imageView type variable.
+    */
     private Button btn_add_img;
     private ImageView add_img;
     private Button saveData;
@@ -48,7 +55,7 @@ public class AddNewCityFragment extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.add_new_city_fragment, container, false);
-
+//  initialization of variables.
         add_img = (ImageView) view.findViewById(R.id.add_img);
         btn_add_img = (Button) view.findViewById(R.id.btn_add_img);
         btn_add_img.setOnClickListener(this);
@@ -58,12 +65,20 @@ public class AddNewCityFragment extends Fragment implements View.OnClickListener
         cityDetails = (EditText) view.findViewById(R.id.city_detail);
         return view;
     }
-
+// A method to open gallery to pick a picture using implicit intent through ACTION_PICK.
     private void openGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, RESULT_LOAD_IMAGE);
     }
-
+   /*
+    * @param requestCode The integer request code originally supplied to
+     *                    startActivityForResult(), allowing you to identify who this
+     *                    result came from.
+     * @param resultCode The integer result code returned by the child activity
+     *                   through its setResult().
+     * @param data An Intent, which can return result data to the caller
+     *               (various data can be attached to Intent "extras").
+    */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -85,7 +100,7 @@ public class AddNewCityFragment extends Fragment implements View.OnClickListener
         }
     }
 
-    private boolean checkPermission(){
+    private boolean checkPermission() {
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
 
@@ -150,8 +165,14 @@ public class AddNewCityFragment extends Fragment implements View.OnClickListener
     }
 
     private boolean validate() {
-        if(cityName.getText().length() == 0 || cityDetails.getText().length() == 0 || bitmap == null){
-            Toast.makeText(this.getContext(), "'City', 'About City' and 'Image' can't be empty.", Toast.LENGTH_SHORT).show();
+        if(cityName.getText().length() == 0){
+            Toast.makeText(this.getContext(), "'City' can't be empty.", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if( cityDetails.getText().length() == 0){
+            Toast.makeText(this.getContext(), "'description' can't be empty.", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if ( bitmap == null){
+            Toast.makeText(this.getContext(), "'image' can't be empty.", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;

@@ -16,7 +16,7 @@ public class TestData implements DataProvider {
 
     private static ArrayList<City> data;
 
-    public TestData(){
+    public TestData() {
         data = prepareCityList();
     }
 
@@ -33,7 +33,7 @@ public class TestData implements DataProvider {
             city.setCityName(cities[i]);
             CityDetail cityDetail = cityDetailArrayList.get(i);
             city.setCityDetail(cityDetail);
-            if(famousPlacesArrayList.size() > i) {
+            if (famousPlacesArrayList.size() > i) {
                 ArrayList<FamousPlace> famousPlace = famousPlacesArrayList.get(i);
                 city.setFamousPlaceList(famousPlace);
             }
@@ -113,14 +113,24 @@ public class TestData implements DataProvider {
                 R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5, R.drawable.delhi_image5
                 , R.drawable.delhi_image5}};
 
-        String[][] description = {{"1", "2", "3", "4", "5", "6", "7", "8"}, {"", "", "", "", "", "", "", ""}};
+        String[][] description = {{"Red Fort has become a grand and attractive place.", "The India Gate, is a war memorial located astride the Rajpath in delhi.",
+                "Akshardham is a Hindu mandir, and a spiritual-cultural campus.", "The Lotus Temple is a Bahá'í House of Worship that was dedicated in December 1986",
+                "The Masjid-i Jahān-Numā, commonly known as the Jama Masjid of Delhi, is one of the largest mosques in India.",
+                "Jantar Mantar consists of 13 architectural astronomy instruments.","Qutub Minar is a UNESCO World Heritage Site in the Mehrauli area of Delhi.",
+                "The Rashtrapati Bhavan is the official home of the president in New Delhi."}, {"The Gateway of India is located on the waterfront at Apollo Bunder in South Mumbai.",
+                "Marine Drive is a 3.6-kilometre-long boulevard in South Mumbai.", "Chhatrapati Shivaji Terminus is a historic railway station and a UNESCO World Heritage Site in Mumbai,",
+                "Mahatma Jyotiba Phule Mandi is one of South Mumbai's most famous markets.", "Elephanta Caves are a network of sculpted caves located on Elephanta " +
+                "Island,in Mumbai", "The Rajabai Clock Tower is located in the confines of the Fort campus of the University of Mumbai.", "The Shree Siddhivinayak Ganapati Mandir " +
+                "is a Hindu temple dedicated to Lord Shri Ganesh.", "The Taj Mahal Palace Hotel is a Heritage Grand class five-star hotel in the Colaba region of Mumbai,"}};
 
         String[][] title = {{"Red Fort", "India Gate", "Akshardham", "Lotus Temple", "Jama Masjid",
-                "Jantar Mantar", "title7", "title8"}, {"", "", "", "", "", "", "", ""}};
+                "Jantar Mantar", "Qutub Minar", "Rashtrapati Bhawan"}, {"Gateway of India", "Marine Drive ", "Chhatrapati Shivaji Terminus",
+                "Crawford Market", "Elephanta" +
+                " Caves", "Rajabai Clock Tower", "Siddhivinayak Temple", "Tajmahal Palace"}};
 
-        double[][] latitude = {{28.6562, 28.6162, 28.6127, 28.5535, 28.6507, 28.6271, 28.6507, 28.6271}, {28.6562, 28.6162, 28.6127, 28.5535, 28.6507, 28.6271, 28.6507, 28.6271}};
+        double[][] latitude = {{28.6562, 28.6162, 28.6127, 28.5535, 28.6507, 28.6271, 28.5244, 28.6144}, {18.9220, 18.9430712, 18.9398, 18.9477, 18.9633, 18.9298, 19.0169, 18.9217}};
 
-        double[][] longitude = {{77.2410, 77.2295, 77.2773, 77.2588, 77.2334, 77.2166, 77.2334, 77.2166}, {77.2410, 77.2295, 77.2773, 77.2588, 77.2334, 77.2166, 77.2334, 77.2166}};
+        double[][] longitude = {{77.2410, 77.2295, 77.2773, 77.2588, 77.2334, 77.2166, 77.1855, 77.1996}, {72.8347, 72.8230638, 72.8355, 72.8342, 72.9315, 72.8301, 72.8303, 72.8330}};
 
         for (int i = 0; i < description.length; i++) {
             {

@@ -72,8 +72,8 @@ public class FamousPlacesActivity extends AppCompatActivity implements ItemClick
         Intent intent = new Intent(this, MapsActivity.class);
         double lat = famousPlace.getLatitude();
         double log = famousPlace.getLongitude();
-        intent.putExtra("lat", lat);
-        intent.putExtra("log", log);
+        intent.putExtra(Constants.LATITUDE, lat);
+        intent.putExtra(Constants.LONGITUDE, log);
         startActivity(intent);
     }
 }

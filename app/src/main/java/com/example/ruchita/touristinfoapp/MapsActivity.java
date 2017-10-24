@@ -44,8 +44,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         Intent intent = getIntent();
-        double lat = intent.getDoubleExtra("lat",-1);
-        double log = intent.getDoubleExtra("log", -1);
+        double lat = intent.getDoubleExtra(Constants.LATITUDE,-1);
+        double log = intent.getDoubleExtra(Constants.LONGITUDE, -1);
         LatLng famousCity = new LatLng(lat,log);
         mMap.addMarker(new MarkerOptions().position(famousCity).title(lat+","+log));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(famousCity, 12));

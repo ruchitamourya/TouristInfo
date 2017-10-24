@@ -17,30 +17,34 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 /**
- * Created by Chandan on 21-10-2017.
+ * Created by Ruchita on 21-10-2017.
  */
-
+// A class to store data.
 public class InternalStorage implements DataProvider {
     private static final String TAG = InternalStorage.class.getSimpleName();
+    //@Constant CITY_FILE is a string type to hold a string value.
     private static String CITY_FILE = "cities.json";
     private Context mContext;
     private static InternalStorage instance;
     private ArrayList<City> mCities;
 
+    // constructor of class InternalStorage.
     private InternalStorage(Context context) {
         mContext = context;
         mCities = getCitiesFromFile();
     }
 
-    public static InternalStorage getInstance(Context context){
-        if(instance == null){
+    // A method to get the instance of InternalStorage.
+    public static InternalStorage getInstance(Context context) {
+        if (instance == null) {
             instance = new InternalStorage(context.getApplicationContext());
         }
         return instance;
     }
 
+    // A method to update the hardcoded data.
     public void updateDataWithHardCodedData() {
-        if(CommonUtils.getLaunchCount(mContext) == 0){
+        if (CommonUtils.getLaunchCount(mContext) == 0) {
             DataProvider hardCodedData = new TestData();
             mCities.addAll(hardCodedData.getCities());
             saveCitiesToFile();
@@ -59,7 +63,7 @@ public class InternalStorage implements DataProvider {
 
     @Override
     public void addCity(City city) {
-        mCities.add(mCities.size()-1, city);
+        mCities.add(mCities.size() - 1, city);
         saveCitiesToFile();
     }
 
@@ -69,6 +73,7 @@ public class InternalStorage implements DataProvider {
         saveCitiesToFile();
     }
 
+    // A method to save the cities in file.
     private void saveCitiesToFile() {
         Gson gson = new Gson();
         String string = gson.toJson(mCities);
@@ -82,12 +87,14 @@ public class InternalStorage implements DataProvider {
         }
     }
 
+    // A method to get the cities from file.
     private ArrayList<City> getCitiesFromFile() {
         try {
             FileInputStream inputStream = mContext.openFileInput(CITY_FILE);
             String json = convertStreamToString(inputStream);
             Gson gson = new Gson();
-            Type type = new TypeToken<ArrayList<City>>(){}.getType();
+            Type type = new TypeToken<ArrayList<City>>() {
+            }.getType();
             ArrayList<City> cities = gson.fromJson(json, type);
             return cities;
         } catch (IOException e) {
@@ -96,6 +103,7 @@ public class InternalStorage implements DataProvider {
         }
     }
 
+    //A method for converting inputStream into string value.
     private static String convertStreamToString(InputStream is) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         StringBuilder sb = new StringBuilder();

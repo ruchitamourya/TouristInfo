@@ -11,4 +11,6 @@ public class Constants {
     public static final String FAMOUSPLACES_DATA = "city_key";
     public static final String SHARED_PREF_KEY = "shared_pref_key";
     public static final String IS_LOGGED_IN = "is_logged_in";
+    public static final String LATITUDE = "latitude";
+    public static final String LONGITUDE = "longitude";
 }

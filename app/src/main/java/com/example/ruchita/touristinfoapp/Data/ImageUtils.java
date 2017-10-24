@@ -18,16 +18,26 @@ import java.util.List;
  * Created by Chandan on 21-10-2017.
  */
 
+// A class for managing the image files.
 public class ImageUtils {
-    public static Bitmap getCityImage(Context context, City city){
-        if(city.getCityId() != null){
+    /*
+     *A method for getting the images from storage and assets.
+     * @param context is used for getting context of related activity.
+     * @param city is used for getting the city.
+      */
+    public static Bitmap getCityImage(Context context, City city) {
+        if (city.getCityId() != null) {
             return getImageFromStorage(context, city.getCityDetail().getImagePath());
-        }else {
+        } else {
             return getImageFromAssets(context, city.getCityName().toLowerCase(), "city.jpeg");
         }
     }
-
-    private static Bitmap getImageFromStorage(Context context, String path){
+    /*
+     *A meghod to get images from storage.
+     *@param context is used for getting context of related activity.
+     * @param path is used to provide path for file.
+      */
+    private static Bitmap getImageFromStorage(Context context, String path) {
         Bitmap bitmap = null;
         try {
             File file = new File(context.getFilesDir(), path);
@@ -38,37 +48,42 @@ public class ImageUtils {
         }
         return bitmap;
     }
-
-    private static Bitmap getImageFromAssets(Context context, String cityName, String imageName){
+/*
+*A method to get the images from assets.
+  *@param context is used for getting context of related activity.
+  * @param cituName is used to get the city name.
+  * @param imageName is used to provide name of image.
+ */
+    private static Bitmap getImageFromAssets(Context context, String cityName, String imageName) {
         AssetManager assetManager = context.getAssets();
         Bitmap bitmap = null;
         try {
-            InputStream inputStream = assetManager.open(cityName+"/"+imageName);
+            InputStream inputStream = assetManager.open(cityName + "/" + imageName);
             bitmap = BitmapFactory.decodeStream(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return bitmap;
     }
-
+// A method to set the image according to name of the title.
     public static Bitmap getFamousPlacesImage(Context context, String cityName, String title) {
         title = title.toLowerCase();
-        title = title.replace(" ","");
-        title = title+".jpeg";
+        title = title.replace(" ", "");
+        title = title + ".jpeg";
         return getImageFromAssets(context, cityName.toLowerCase(), title);
     }
-
+// A method to fetch the images from gallery.
     public static List<Bitmap> getGalleryImages(Context context, City city) {
         ArrayList<Bitmap> bitmaps = new ArrayList<>();
-        if(city.getCityId() != null){
+        if (city.getCityId() != null) {
             fetchImagesFromStorage(context, bitmaps, city.getCityId());
-        }else {
+        } else {
             String folder = city.getCityName().toLowerCase();
             AssetManager assetManager = context.getAssets();
             try {
                 String[] images = assetManager.list(folder);
-                for(String path : images){
-                    InputStream inputStream = assetManager.open(folder+"/"+path);
+                for (String path : images) {
+                    InputStream inputStream = assetManager.open(folder + "/" + path);
                     Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                     inputStream.close();
                     bitmaps.add(bitmap);
@@ -80,19 +95,20 @@ public class ImageUtils {
         return bitmaps;
     }
 
+// A method to fetch the images from storage.
     private static void fetchImagesFromStorage(Context context, ArrayList<Bitmap> bitmaps, String cityId) {
         File file = new File(context.getFilesDir(), cityId);
-        if(file.exists() && file.isDirectory()){
+        if (file.exists() && file.isDirectory()) {
             File[] children = file.listFiles();
-            for (File file1 : children){
+            for (File file1 : children) {
                 Bitmap bitmap = BitmapFactory.decodeFile(file1.getPath());
                 bitmaps.add(bitmap);
             }
         }
     }
-
+// A method to save the cities images.
     public static String saveCityImage(Context context, City city, Bitmap bitmap) {
-        String imagePath = city.getCityId()+"/city.jpeg";
+        String imagePath = city.getCityId() + "/city.jpeg";
         try {
             File file = new File(context.getFilesDir(), imagePath);
             file.getParentFile().mkdirs();

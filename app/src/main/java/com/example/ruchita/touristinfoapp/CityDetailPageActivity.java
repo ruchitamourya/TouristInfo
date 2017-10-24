@@ -46,11 +46,11 @@ public class CityDetailPageActivity extends AppCompatActivity implements View.On
         // method call to populate the data of city detail.
         populateData();
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.showOverflowMenu();
+       toolbar = (Toolbar) findViewById(R.id.toolbar);
+       setSupportActionBar(toolbar);
+       toolbar.showOverflowMenu();
         toolbar.setOnMenuItemClickListener(this);
-        populateData();
+      //  populateData();
     }
 
     @Override

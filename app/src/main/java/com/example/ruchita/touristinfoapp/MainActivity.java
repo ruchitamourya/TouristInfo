@@ -12,11 +12,11 @@ import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
+    // Field variables of MainActivity class .
     private Button button_login;
     private EditText user_name;
     private EditText password;
-    private Toolbar toolbar;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +25,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button_login = (Button) findViewById(R.id.button_login);
         user_name = (EditText) findViewById(R.id.user_name);
         password = (EditText) findViewById(R.id.password);
-
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Tourist Info");
-            button_login.setOnClickListener(this);
-        }
+        button_login.setOnClickListener(this);
+    }
 
     @Override
     public void onClick(View v) {

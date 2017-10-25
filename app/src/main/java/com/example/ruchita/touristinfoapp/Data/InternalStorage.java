@@ -24,8 +24,9 @@ public class InternalStorage implements DataProvider {
     private static final String TAG = InternalStorage.class.getSimpleName();
     //@Constant CITY_FILE is a string type to hold a string value.
     private static String CITY_FILE = "cities.json";
+    // Field variables of class InternalStorage.
     private Context mContext;
-    private static InternalStorage instance;
+    private static InternalStorage mInstance;
     private ArrayList<City> mCities;
 
     // constructor of class InternalStorage.
@@ -36,10 +37,10 @@ public class InternalStorage implements DataProvider {
 
     // A method to get the instance of InternalStorage.
     public static InternalStorage getInstance(Context context) {
-        if (instance == null) {
-            instance = new InternalStorage(context.getApplicationContext());
+        if (mInstance == null) {
+            mInstance = new InternalStorage(context.getApplicationContext());
         }
-        return instance;
+        return mInstance;
     }
 
     // A method to update the hardcoded data.

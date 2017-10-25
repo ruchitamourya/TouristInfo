@@ -3,14 +3,15 @@ package com.example.ruchita.touristinfoapp.Model;
 import java.util.ArrayList;
 
 /**
- * Created by ruchita on 22/9/17.
+ * Created by Ruchita on 22/9/17.
  */
-
+// A model class for cities.
 public class City {
+    // Properties of class City.
     private String cityId;
     private String cityName;
     private CityDetail cityDetail;
-    private ArrayList<FamousPlace >famousPlaceList;
+    private ArrayList<FamousPlace> famousPlaceList;
 
     public String getCityName() {
         return cityName;

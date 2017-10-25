@@ -11,21 +11,21 @@ import android.view.MenuItem;
 import com.example.ruchita.touristinfoapp.Data.CommonUtils;
 
 public class CityListActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener {
-
-    private FragmentManager fragmentManager;
-    private Toolbar toolbar;
+    // Field variables of class CityListActivity.
+    private FragmentManager mFragmentManager;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_list);
-        fragmentManager = getSupportFragmentManager();
+        mFragmentManager = getSupportFragmentManager();
         addCityNameFragment();
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.showOverflowMenu();
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        mToolbar.showOverflowMenu();
         getSupportActionBar().setTitle("Cities");
-        toolbar.setOnMenuItemClickListener(this);
+        mToolbar.setOnMenuItemClickListener(this);
 
     }
 
@@ -35,9 +35,10 @@ public class CityListActivity extends AppCompatActivity implements Toolbar.OnMen
         return true;
     }
 
+    // A method to add a fragment on CityListActivity class.
     public void addCityNameFragment() {
         CityNameRecyclerViewFragment cityNameRecyclerViewFragment = new CityNameRecyclerViewFragment();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        FragmentTransaction transaction = mFragmentManager.beginTransaction();
         transaction.replace(R.id.container, cityNameRecyclerViewFragment, Constants.FRAGMENT);
         transaction.commit();
     }

@@ -14,17 +14,18 @@ import com.example.ruchita.touristinfoapp.R;
 import java.util.List;
 
 /**
- * Created by ruchita on 26/9/17.
+ * Created by Ruchita on 26/9/17.
  */
 
 public class ViewPagerAdapter extends PagerAdapter {
-
+    // Field variables of class ViewPagerAdapter.
     private LayoutInflater mInflater;
-    private Context context;
+    private Context mContext;
     private List<Bitmap> mList;
 
+    // Constructor of class ViewPagerAdapter.
     public ViewPagerAdapter(Context context, List<Bitmap> list) {
-        this.context = context;
+        this.mContext = context;
         this.mList = list;
     }
 
@@ -40,7 +41,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        mInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+        mInflater = (LayoutInflater) mContext.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
         View view_pager = mInflater.inflate(R.layout.view_pager_item, container, false);
         ImageView pager_view_img = (ImageView) view_pager.findViewById(R.id.view_pager_img);
         pager_view_img.setImageBitmap(mList.get(position));

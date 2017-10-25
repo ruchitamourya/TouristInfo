@@ -1,11 +1,11 @@
 package com.example.ruchita.touristinfoapp.Model;
 
 /**
- * Created by ruchita on 26/9/17.
+ * Created by Ruchita on 26/9/17.
  */
-
+// A model class for famous place.
 public class FamousPlace {
-
+    // Properties of class FamousPlaces.
     private String title;
     private String description;
     private int imgResourceId;
@@ -28,13 +28,13 @@ public class FamousPlace {
         this.description = description;
     }
 
-    public int getImgResourceId() {
-        return imgResourceId;
-    }
-
-    public void setImgResourceId(int imgResourceId) {
-        this.imgResourceId = imgResourceId;
-    }
+//    public int getImgResourceId() {
+//        return imgResourceId;
+//    }
+//
+//    public void setImgResourceId(int imgResourceId) {
+//        this.imgResourceId = imgResourceId;
+//    }
 
 
     public double getLatitude() {

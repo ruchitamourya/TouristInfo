@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Chandan on 21-10-2017.
+ * Created by Ruchita on 21-10-2017.
  */
 
 // A class for managing the image files.
@@ -32,8 +32,9 @@ public class ImageUtils {
             return getImageFromAssets(context, city.getCityName().toLowerCase(), "city.jpeg");
         }
     }
+
     /*
-     *A meghod to get images from storage.
+     *A method to get images from storage.
      *@param context is used for getting context of related activity.
      * @param path is used to provide path for file.
       */
@@ -48,12 +49,13 @@ public class ImageUtils {
         }
         return bitmap;
     }
-/*
-*A method to get the images from assets.
-  *@param context is used for getting context of related activity.
-  * @param cituName is used to get the city name.
-  * @param imageName is used to provide name of image.
- */
+
+    /*
+      *A method to get the images from assets.
+      *@param context is used for getting context of related activity.
+      * @param cituName is used to get the city name.
+      * @param imageName is used to provide name of image.
+     */
     private static Bitmap getImageFromAssets(Context context, String cityName, String imageName) {
         AssetManager assetManager = context.getAssets();
         Bitmap bitmap = null;
@@ -65,14 +67,16 @@ public class ImageUtils {
         }
         return bitmap;
     }
-// A method to set the image according to name of the title.
+
+    // A method to set the image according to name of the title.
     public static Bitmap getFamousPlacesImage(Context context, String cityName, String title) {
         title = title.toLowerCase();
         title = title.replace(" ", "");
         title = title + ".jpeg";
         return getImageFromAssets(context, cityName.toLowerCase(), title);
     }
-// A method to fetch the images from gallery.
+
+    // A method to fetch the images from gallery.
     public static List<Bitmap> getGalleryImages(Context context, City city) {
         ArrayList<Bitmap> bitmaps = new ArrayList<>();
         if (city.getCityId() != null) {
@@ -95,7 +99,7 @@ public class ImageUtils {
         return bitmaps;
     }
 
-// A method to fetch the images from storage.
+    // A method to fetch the images from storage.
     private static void fetchImagesFromStorage(Context context, ArrayList<Bitmap> bitmaps, String cityId) {
         File file = new File(context.getFilesDir(), cityId);
         if (file.exists() && file.isDirectory()) {
@@ -106,7 +110,8 @@ public class ImageUtils {
             }
         }
     }
-// A method to save the cities images.
+
+    // A method to save the cities images.
     public static String saveCityImage(Context context, City city, Bitmap bitmap) {
         String imagePath = city.getCityId() + "/city.jpeg";
         try {

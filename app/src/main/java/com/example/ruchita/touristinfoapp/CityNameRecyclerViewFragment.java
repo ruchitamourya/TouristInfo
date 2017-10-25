@@ -21,32 +21,35 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 
 /**
- * Created by ruchita on 5/10/17.
+ * Created by Ruchita on 5/10/17.
  */
 
-public class CityNameRecyclerViewFragment extends Fragment implements ItemClickListener{
-    private FragmentManager fragmentManager;
-    private DataProvider dataProvider;
+public class CityNameRecyclerViewFragment extends Fragment implements ItemClickListener {
+    // Field variables of class CityNameRecyclerViewFragment.
+    private FragmentManager mFragmentManager;
+    private DataProvider mDataProvider;
 
-    public CityNameRecyclerViewFragment(){
-        dataProvider = InternalStorage.getInstance(this.getContext());
+    // Default constructor of class CityNameRecyclerViewFragment.
+    public CityNameRecyclerViewFragment() {
+        mDataProvider = InternalStorage.getInstance(this.getContext());
     }
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.city_name_recyclerview_fragment,container,false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.city_name_recyclerview_fragment, container, false);
         setUpRecyclerView(view);
-        fragmentManager = getFragmentManager();
+        mFragmentManager = getFragmentManager();
         return view;
     }
 
+    // A method to set recyclerView on CityNameRecyclerViewFragment class.
     private void setUpRecyclerView(View v) {
-        RecyclerView recyclerView = (RecyclerView)v.findViewById(R.id.recyclerView);
-        ArrayList<City> data = dataProvider.getCities();
+        RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
+        ArrayList<City> data = mDataProvider.getCities();
         CityGridAdapter adapter = new CityGridAdapter(getActivity(), this, data);
 
         recyclerView.setAdapter(adapter);
 
-        GridLayoutManager mGridLayoutManager = new GridLayoutManager(getActivity(),2);
+        GridLayoutManager mGridLayoutManager = new GridLayoutManager(getActivity(), 2);
         mGridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mGridLayoutManager);
 
@@ -61,7 +64,7 @@ public class CityNameRecyclerViewFragment extends Fragment implements ItemClickL
 
     @Override
     public void onItemClick(View view, City current) {
-        if(view.getId() == R.id.cardView) {
+        if (view.getId() == R.id.cardView) {
             if (!current.getCityName().equals(Constants.ADD_NEW_CITY)) {
                 openDetailsActivity(current);
             } else {
@@ -70,6 +73,7 @@ public class CityNameRecyclerViewFragment extends Fragment implements ItemClickL
         }
     }
 
+    // A method to open DetailActivity class.
     private void openDetailsActivity(City current) {
         String data;
         Intent intent = new Intent(getActivity(), CityDetailPageActivity.class);
@@ -79,9 +83,10 @@ public class CityNameRecyclerViewFragment extends Fragment implements ItemClickL
         startActivity(intent);
     }
 
+    // A method to set a new fragment on CityNameRecyclerViewFragment class.
     public void addNewCityFragment() {
         AddNewCityFragment fragment = new AddNewCityFragment();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        FragmentTransaction transaction = mFragmentManager.beginTransaction();
         transaction.replace(R.id.container, fragment, Constants.FRAGMENT);
         transaction.addToBackStack(Constants.FRAGMENT);
         transaction.commit();

@@ -17,26 +17,27 @@ import com.google.gson.Gson;
 import java.util.List;
 
 public class GalleryActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener {
+    // Field variables of class GalleryActivity.
+    private ViewPager mViewPager;
+    private ViewPagerAdapter mAdapter;
+    private Toolbar mToolbar;
 
-   private ViewPager viewPager;
-   private ViewPagerAdapter adapter;
-   private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery);
         Gson gson = new Gson();
         String data = getIntent().getStringExtra(Constants.FAMOUSPLACES_DATA);
-        City city = gson.fromJson(data,City.class);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.showOverflowMenu();
+        City city = gson.fromJson(data, City.class);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        mToolbar.showOverflowMenu();
         getSupportActionBar().setTitle(city.getCityName());
-        toolbar.setOnMenuItemClickListener(this);
+        mToolbar.setOnMenuItemClickListener(this);
         List<Bitmap> imageList = ImageUtils.getGalleryImages(this.getApplicationContext(), city);
-        viewPager = (ViewPager)findViewById(R.id.view_pager);
-        adapter = new ViewPagerAdapter(this, imageList);
-        viewPager.setAdapter(adapter);
+        mViewPager = (ViewPager) findViewById(R.id.view_pager);
+        mAdapter = new ViewPagerAdapter(this, imageList);
+        mViewPager.setAdapter(mAdapter);
     }
 
     @Override

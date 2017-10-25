@@ -22,7 +22,7 @@ public class CommonUtils {
     private static final String LAUNCH_COUNT = "launchcount";
 
     /*
-    * A method to count launch of application.
+      * A method to count launch of application.
       * @param context is used for getting context of related activity.
      */
     public static int getLaunchCount(Context context) {

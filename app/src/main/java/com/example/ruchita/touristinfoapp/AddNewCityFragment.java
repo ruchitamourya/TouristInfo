@@ -30,7 +30,7 @@ import java.util.UUID;
 import static android.app.Activity.RESULT_OK;
 
 /**
- * Created by ruchita on 4/10/17.
+ * Created by Ruchita on 4/10/17.
  */
 
 public class AddNewCityFragment extends Fragment implements View.OnClickListener {
@@ -65,20 +65,22 @@ public class AddNewCityFragment extends Fragment implements View.OnClickListener
         cityDetails = (EditText) view.findViewById(R.id.city_detail);
         return view;
     }
-// A method to open gallery to pick a picture using implicit intent through ACTION_PICK.
+
+    // A method to open gallery to pick a picture using implicit intent through ACTION_PICK.
     private void openGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, RESULT_LOAD_IMAGE);
     }
-   /*
-    * @param requestCode The integer request code originally supplied to
-     *                    startActivityForResult(), allowing you to identify who this
-     *                    result came from.
-     * @param resultCode The integer result code returned by the child activity
-     *                   through its setResult().
-     * @param data An Intent, which can return result data to the caller
-     *               (various data can be attached to Intent "extras").
-    */
+
+    /*
+     * @param requestCode The integer request code originally supplied to
+      *                    startActivityForResult(), allowing you to identify who this
+      *                    result came from.
+      * @param resultCode The integer result code returned by the child activity
+      *                   through its setResult().
+      * @param data An Intent, which can return result data to the caller
+      *               (various data can be attached to Intent "extras").
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -149,14 +151,14 @@ public class AddNewCityFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.btn_add_img) {
+        if (v.getId() == R.id.btn_add_img) {
             boolean permissionAlreadyGranted = checkPermission();
             if (permissionAlreadyGranted) {
                 openGallery();
             }
-        }else if(v.getId() == R.id.btn_save){
+        } else if (v.getId() == R.id.btn_save) {
             boolean valid = validate();
-            if(valid) {
+            if (valid) {
                 saveData.setOnClickListener(null);
                 addCity();
                 goBack();
@@ -165,13 +167,13 @@ public class AddNewCityFragment extends Fragment implements View.OnClickListener
     }
 
     private boolean validate() {
-        if(cityName.getText().length() == 0){
+        if (cityName.getText().length() == 0) {
             Toast.makeText(this.getContext(), "'City' can't be empty.", Toast.LENGTH_SHORT).show();
             return false;
-        }else if( cityDetails.getText().length() == 0){
+        } else if (cityDetails.getText().length() == 0) {
             Toast.makeText(this.getContext(), "'description' can't be empty.", Toast.LENGTH_SHORT).show();
             return false;
-        }else if ( bitmap == null){
+        } else if (bitmap == null) {
             Toast.makeText(this.getContext(), "'image' can't be empty.", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -180,7 +182,7 @@ public class AddNewCityFragment extends Fragment implements View.OnClickListener
 
     private void goBack() {
         FragmentManager manager = getFragmentManager();
-        if(manager.getBackStackEntryCount() > 0){
+        if (manager.getBackStackEntryCount() > 0) {
             manager.popBackStack();
         }
     }
@@ -188,7 +190,7 @@ public class AddNewCityFragment extends Fragment implements View.OnClickListener
     private void addCity() {
         City city = new City();
         String id = UUID.randomUUID().toString();
-        id = id.replace("-","");
+        id = id.replace("-", "");
         city.setCityId(id);
         city.setCityName(cityName.getText().toString());
         CityDetail cityDetail = new CityDetail();

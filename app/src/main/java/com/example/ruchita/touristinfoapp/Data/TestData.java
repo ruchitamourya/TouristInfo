@@ -14,11 +14,11 @@ import java.util.ArrayList;
 // A class for all hardcoded data.
 public class TestData implements DataProvider {
 
-    private static ArrayList<City> data;
+    private static ArrayList<City> mData;
 
     // Default constructor of class TestData.
     public TestData() {
-        data = prepareCityList();
+        mData = prepareCityList();
     }
 
     // A method to get the ArrayList of city.
@@ -111,7 +111,7 @@ public class TestData implements DataProvider {
     // A method to get ArrayList of Class FamousPlaces.
     private static ArrayList<ArrayList<FamousPlace>> getFamousPlacesData() {
         ArrayList<ArrayList<FamousPlace>> listOfData = new ArrayList<>();
-        
+
 // this description variable hold a string value about famous places of cities.
         String[][] description = {{"Red Fort has become a grand and attractive place.", "The India Gate, is a war memorial located astride the Rajpath in delhi.",
                 "Akshardham is a Hindu mandir, and a spiritual-cultural campus.", "The Lotus Temple is a Bahá'í House of Worship that was dedicated in December 1986.",
@@ -153,7 +153,7 @@ public class TestData implements DataProvider {
 
     @Override
     public ArrayList<City> getCities() {
-        return data;
+        return mData;
     }
 
     @Override

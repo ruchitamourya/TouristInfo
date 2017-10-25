@@ -29,6 +29,7 @@ public class SplashActivity extends AppCompatActivity {
         finish();
     }
 
+    // A method to check if login or not.
     private boolean checkLogin() {
         SharedPreferences sharedPreferences = this.getSharedPreferences(Constants.SHARED_PREF_KEY, MODE_PRIVATE);
         boolean loggedIn = sharedPreferences.getBoolean(Constants.IS_LOGGED_IN, false);

@@ -13,16 +13,22 @@ import com.example.ruchita.touristinfoapp.R;
 import java.util.List;
 
 /**
- * Created by ruchita on 21/9/17.
+ * Created by Ruchita on 21/9/17.
  */
 
 public class CityGridAdapter extends RecyclerView.Adapter<CityNameViewHolder> {
-
+    // Field variables of class CityGridAdapter.
     private List<City> mData;
     private LayoutInflater mInflater;
     private Context mContext;
     private ItemClickListener mItemClickListener;
 
+    /*
+     *Constructor of class CityGridAdapter.
+     * @param context is used for getting context of related activity.
+     * @param clickListener  is used for getting the property of ItemClickListener in class CityGridAdapter.
+     * @param data is used for getting the data in class CityGridAdapter.
+      */
     public CityGridAdapter(Context context, ItemClickListener clickListener, List<City> data) {
         this.mData = data;
         this.mContext = context;
@@ -48,11 +54,12 @@ public class CityGridAdapter extends RecyclerView.Adapter<CityNameViewHolder> {
         holder.setData(currentObj);
     }
 
+    // A method to find out the color of grid.
     private boolean isRed(int position) {
         int i = position % 4;
-        if(i == 0 || i == 3){
+        if (i == 0 || i == 3) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }

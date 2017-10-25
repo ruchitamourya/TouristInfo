@@ -18,27 +18,26 @@ import com.example.ruchita.touristinfoapp.Model.City;
 import com.example.ruchita.touristinfoapp.Model.FamousPlace;
 import com.google.gson.Gson;
 
-public class FamousPlacesActivity extends AppCompatActivity implements ItemClickListenerOfFamousPlace, Toolbar.OnMenuItemClickListener {
-
-    private Toolbar toolbar;
+public class FamousPlacesActivity extends AppCompatActivity implements ItemClickListenerOfFamousPlace,
+        Toolbar.OnMenuItemClickListener {
+    // A field variable of class FamousPlacesActivity.
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_famous_places);
-
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.showOverflowMenu();
-        toolbar.setOnMenuItemClickListener(this);
-
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        mToolbar.showOverflowMenu();
+        mToolbar.setOnMenuItemClickListener(this);
         Gson gson = new Gson();
         String data = getIntent().getStringExtra(Constants.FAMOUSPLACES_DATA);
         City city = gson.fromJson(data, City.class);
         getSupportActionBar().setTitle(city.getCityName());
         if (city.getFamousPlaceList() != null && city.getFamousPlaceList().size() > 0) {
             setUpRecyclerView(city);
-        }else {
+        } else {
             FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_no_data);
             frameLayout.setVisibility(View.VISIBLE);
         }
@@ -50,6 +49,7 @@ public class FamousPlacesActivity extends AppCompatActivity implements ItemClick
         return true;
     }
 
+    // A method to set recyclerView on FamousPlacesActivity class.
     private void setUpRecyclerView(City city) {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView2);
         recyclerView.setVisibility(View.VISIBLE);

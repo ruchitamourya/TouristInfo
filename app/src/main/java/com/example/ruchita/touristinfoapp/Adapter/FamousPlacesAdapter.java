@@ -15,36 +15,38 @@ import com.example.ruchita.touristinfoapp.R;
 import java.util.List;
 
 /**
- * Created by ruchita on 25/9/17.
+ * Created by Ruchita on 25/9/17.
  */
 
-public class FamousPlacesAdapter extends RecyclerView.Adapter<FamousPlacesViewHolder>{
-
+public class FamousPlacesAdapter extends RecyclerView.Adapter<FamousPlacesViewHolder> {
+    // Field variables of class FamousPlacesAdapter.
     private List<FamousPlace> mListData;
     private LayoutInflater mInflater;
-    private ItemClickListenerOfFamousPlace itemClickListenerOfFamousPlace;
-    private String cityName;
-    private Context context;
+    private ItemClickListenerOfFamousPlace mItemClickListenerOfFamousPlace;
+    private String mCityName;
+    private Context mContext;
 
+    // Constructor of class ofFamousPlacesAdapter.
     public FamousPlacesAdapter(Context context, ItemClickListenerOfFamousPlace
-            itemClickListenerOfFamousPlace, List<FamousPlace> list, String cityName){
+            itemClickListenerOfFamousPlace, List<FamousPlace> list, String cityName) {
         this.mListData = list;
-        this.itemClickListenerOfFamousPlace = itemClickListenerOfFamousPlace;
+        this.mItemClickListenerOfFamousPlace = itemClickListenerOfFamousPlace;
         this.mInflater = LayoutInflater.from(context);
-        this.cityName = cityName;
-        this.context = context;
+        this.mCityName = cityName;
+        this.mContext = context;
     }
+
     @Override
     public FamousPlacesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.famous_places_itemlist, parent,false);
-        FamousPlacesViewHolder holder = new FamousPlacesViewHolder(view,itemClickListenerOfFamousPlace);
+        View view = mInflater.inflate(R.layout.famous_places_itemlist, parent, false);
+        FamousPlacesViewHolder holder = new FamousPlacesViewHolder(view, mItemClickListenerOfFamousPlace);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(FamousPlacesViewHolder holder, int position) {
         FamousPlace currentObj = mListData.get(position);
-        Bitmap bitmap = ImageUtils.getFamousPlacesImage(context, cityName, currentObj.getTitle());
+        Bitmap bitmap = ImageUtils.getFamousPlacesImage(mContext, mCityName, currentObj.getTitle());
         holder.setData(currentObj, position, bitmap);
     }
 

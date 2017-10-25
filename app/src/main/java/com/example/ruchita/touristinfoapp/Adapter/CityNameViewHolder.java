@@ -10,31 +10,33 @@ import com.example.ruchita.touristinfoapp.Model.City;
 import com.example.ruchita.touristinfoapp.R;
 
 /**
- * Created by ruchita on 22/9/17.
+ * Created by Ruchita on 22/9/17.
  */
 public class CityNameViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
+    // Field variables of Class CityNameViewHolder.
     CardView cardView;
     private TextView city_name;
-    private City current;
-    private ItemClickListener itemClickListener;
+    private City mCurrent;
+    private ItemClickListener mItemClickListener;
 
+    // Constructor of Class CityViewHolder.
     public CityNameViewHolder(View itemView, ItemClickListener itemClickListener) {
         super(itemView);
-        this.itemClickListener = itemClickListener;
+        this.mItemClickListener = itemClickListener;
         city_name = (TextView) itemView.findViewById(R.id.city_name);
         cardView = (CardView) itemView.findViewById(R.id.cardView);
     }
 
+    // A method to set the data of class City.
     public void setData(City current) {
         this.city_name.setText(current.getCityName());
-        this.current = current;
+        this.mCurrent = current;
         cardView.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        itemClickListener.onItemClick(v, current);
+        mItemClickListener.onItemClick(v, mCurrent);
     }
 
 

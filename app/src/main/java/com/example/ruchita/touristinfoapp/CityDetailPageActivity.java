@@ -24,9 +24,8 @@ public class CityDetailPageActivity extends AppCompatActivity implements View.On
     private TextView city_details;
     private Button famous_places;
     private Button gallery;
-    private Toolbar toolbar;
-
-    String data;
+    private Toolbar mToolbar;
+    private String mData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +45,10 @@ public class CityDetailPageActivity extends AppCompatActivity implements View.On
         // method call to populate the data of city detail.
         populateData();
 
-       toolbar = (Toolbar) findViewById(R.id.toolbar);
-       setSupportActionBar(toolbar);
-       toolbar.showOverflowMenu();
-        toolbar.setOnMenuItemClickListener(this);
+       mToolbar = (Toolbar) findViewById(R.id.toolbar);
+       setSupportActionBar(mToolbar);
+       mToolbar.showOverflowMenu();
+        mToolbar.setOnMenuItemClickListener(this);
       //  populateData();
     }
 
@@ -61,8 +60,8 @@ public class CityDetailPageActivity extends AppCompatActivity implements View.On
     // method to populate the data of city detail.
     public void populateData() {
         Gson gson = new Gson();
-        data = getIntent().getStringExtra(Constants.CITY_DATA);
-        City city = gson.fromJson(data, City.class);
+        mData = getIntent().getStringExtra(Constants.CITY_DATA);
+        City city = gson.fromJson(mData, City.class);
        //getSupportActionBar().setTitle(city.getCityName());
         city_image.setImageBitmap(ImageUtils.getCityImage(this, city));
         city_details.setText(city.getCityDetail().getDescription());
@@ -72,11 +71,11 @@ public class CityDetailPageActivity extends AppCompatActivity implements View.On
     public void onClick(View v) {
         if (v.getId() == R.id.famous_places) {
             Intent intent = new Intent(CityDetailPageActivity.this, FamousPlacesActivity.class);
-            intent.putExtra(Constants.FAMOUSPLACES_DATA, data);
+            intent.putExtra(Constants.FAMOUSPLACES_DATA, mData);
             startActivity(intent);
         } else if (v.getId() == R.id.gallery) {
             Intent intent = new Intent(CityDetailPageActivity.this, GalleryActivity.class);
-            intent.putExtra(Constants.FAMOUSPLACES_DATA, data);
+            intent.putExtra(Constants.FAMOUSPLACES_DATA, mData);
             startActivity(intent);
         }
     }

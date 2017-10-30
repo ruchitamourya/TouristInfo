@@ -26,7 +26,7 @@ public class FamousPlacesAdapter extends RecyclerView.Adapter<FamousPlacesViewHo
     private String mCityName;
     private Context mContext;
 
-    // Constructor of class ofFamousPlacesAdapter.
+    // Constructor of class FamousPlacesAdapter.
     public FamousPlacesAdapter(Context context, ItemClickListenerOfFamousPlace
             itemClickListenerOfFamousPlace, List<FamousPlace> list, String cityName) {
         this.mListData = list;

@@ -8,7 +8,6 @@ public class FamousPlace {
     // Properties of class FamousPlaces.
     private String title;
     private String description;
-    private int imgResourceId;
     private double latitude;
     private double longitude;
 
@@ -27,16 +26,6 @@ public class FamousPlace {
     public void setDescription(String description) {
         this.description = description;
     }
-
-//    public int getImgResourceId() {
-//        return imgResourceId;
-//    }
-//
-//    public void setImgResourceId(int imgResourceId) {
-//        this.imgResourceId = imgResourceId;
-//    }
-
-
     public double getLatitude() {
         return latitude;
     }

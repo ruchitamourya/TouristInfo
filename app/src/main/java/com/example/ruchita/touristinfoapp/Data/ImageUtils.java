@@ -76,7 +76,7 @@ public class ImageUtils {
         return getImageFromAssets(context, cityName.toLowerCase(), title);
     }
 
-    // A method to fetch the images from gallery.
+    // A method to fetch the images for gallery.
     public static List<Bitmap> getGalleryImages(Context context, City city) {
         ArrayList<Bitmap> bitmaps = new ArrayList<>();
         if (city.getCityId() != null) {

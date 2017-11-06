@@ -20,7 +20,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.ruchita.touristinfoapp.Data.ExternalStorage;
 import com.example.ruchita.touristinfoapp.Data.ImageUtils;
+import com.example.ruchita.touristinfoapp.Data.FileDataProvider;
 import com.example.ruchita.touristinfoapp.Data.InternalStorage;
 import com.example.ruchita.touristinfoapp.Model.City;
 import com.example.ruchita.touristinfoapp.Model.CityDetail;
@@ -55,7 +57,9 @@ public class AddNewCityFragment extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.add_new_city_fragment, container, false);
-//  initialization of variables.
+/*
+ *initialization of variables.
+  */
         add_img = (ImageView) view.findViewById(R.id.add_img);
         btn_add_img = (Button) view.findViewById(R.id.btn_add_img);
         btn_add_img.setOnClickListener(this);
@@ -66,7 +70,9 @@ public class AddNewCityFragment extends Fragment implements View.OnClickListener
         return view;
     }
 
-    // A method to open gallery to pick a picture using implicit intent through ACTION_PICK.
+    /*
+     *Method to open gallery to pick a picture using implicit intent through ACTION_PICK.
+      */
     private void openGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, RESULT_LOAD_IMAGE);
@@ -110,9 +116,6 @@ public class AddNewCityFragment extends Fragment implements View.OnClickListener
             }
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                     MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
-
-            // MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE is an
-            // app-defined int constant that should be quite unique
 
             return false;
         }
@@ -194,6 +197,6 @@ public class AddNewCityFragment extends Fragment implements View.OnClickListener
         city.setCityDetail(cityDetail);
         String path = ImageUtils.saveCityImage(this.getContext(), city, bitmap);
         cityDetail.setImagePath(path);
-        InternalStorage.getInstance(this.getContext()).addCity(city);
+        ExternalStorage.getInstance(this.getContext()).addCity(city);
     }
 }

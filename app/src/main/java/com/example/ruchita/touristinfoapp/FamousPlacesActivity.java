@@ -20,7 +20,9 @@ import com.google.gson.Gson;
 
 public class FamousPlacesActivity extends AppCompatActivity implements ItemClickListenerOfFamousPlace,
         Toolbar.OnMenuItemClickListener {
-    // A field variable of class FamousPlacesActivity.
+    /*
+     *Field variable of class FamousPlacesActivity.
+      */
     private Toolbar mToolbar;
 
     @Override
@@ -49,7 +51,9 @@ public class FamousPlacesActivity extends AppCompatActivity implements ItemClick
         return true;
     }
 
-    // A method to set recyclerView on FamousPlacesActivity class.
+    /*
+     * Method to set recyclerView on FamousPlacesActivity class.
+      */
     private void setUpRecyclerView(City city) {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView2);
         recyclerView.setVisibility(View.VISIBLE);

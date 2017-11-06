@@ -15,7 +15,9 @@ import com.example.ruchita.touristinfoapp.R;
  */
 
 public class FamousPlacesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    // Field variables of class of FamousPlacesViewHolder.
+    /*
+     *Field variables of class of FamousPlacesViewHolder.
+      */
     private TextView title;
     private TextView description;
     private ImageView famous_placesCity_img;
@@ -24,7 +26,9 @@ public class FamousPlacesViewHolder extends RecyclerView.ViewHolder implements V
     int mPosition;
     private ItemClickListenerOfFamousPlace mItemClickListenerOfFamousPlace;
 
-    // Constructor of class FamousPlacesViewHolder.
+    /*
+     *Constructor of class FamousPlacesViewHolder.
+      */
     public FamousPlacesViewHolder(View itemView, ItemClickListenerOfFamousPlace itemClickListenerOfFamousPlace) {
         super(itemView);
         this.mItemClickListenerOfFamousPlace = itemClickListenerOfFamousPlace;
@@ -34,7 +38,9 @@ public class FamousPlacesViewHolder extends RecyclerView.ViewHolder implements V
         mapImage = (ImageView) itemView.findViewById(R.id.google_img);
     }
 
-    // A method to set the data of classFamousPlacesViewHolder.
+    /*
+     *Method to set the data of classFamousPlacesViewHolder.
+     */
     public void setData(FamousPlace current, int position, Bitmap imageBitmap) {
         this.title.setText(current.getTitle());
         this.famous_placesCity_img.setImageBitmap(imageBitmap);

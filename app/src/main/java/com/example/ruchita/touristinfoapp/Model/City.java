@@ -5,9 +5,13 @@ import java.util.ArrayList;
 /**
  * Created by Ruchita on 22/9/17.
  */
-// A model class for cities.
+/*
+ *Model class for cities.
+ */
 public class City {
-    // Properties of class City.
+    /*
+     *Properties of class City.
+      */
     private String cityId;
     private String cityName;
     private CityDetail cityDetail;

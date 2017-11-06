@@ -3,9 +3,13 @@ package com.example.ruchita.touristinfoapp.Model;
 /**
  * Created by Ruchita on 26/9/17.
  */
-// A model class for famous place.
+/*
+ *Model class for famous place.
+ */
 public class FamousPlace {
-    // Properties of class FamousPlaces.
+    /*
+     *Properties of class FamousPlaces.
+      */
     private String title;
     private String description;
     private double latitude;
@@ -26,6 +30,7 @@ public class FamousPlace {
     public void setDescription(String description) {
         this.description = description;
     }
+
     public double getLatitude() {
         return latitude;
     }

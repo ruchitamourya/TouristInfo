@@ -3,9 +3,13 @@ package com.example.ruchita.touristinfoapp.Model;
 /**
  * Created by Ruchita on 23/9/17.
  */
-// A model class for city detail.
+/*
+ *Model class for city detail.
+ */
 public class CityDetail {
-    // Properties of class CityDetail.
+    /*
+     *Properties of class CityDetail.
+      */
     private int imageId;
     private String imagePath;
     private String description;

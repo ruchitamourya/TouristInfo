@@ -17,7 +17,9 @@ import java.util.List;
  */
 
 public class CityGridAdapter extends RecyclerView.Adapter<CityNameViewHolder> {
-    // Field variables of class CityGridAdapter.
+    /*
+     *Field variables of class CityGridAdapter.
+      */
     private List<City> mData;
     private LayoutInflater mInflater;
     private Context mContext;
@@ -54,7 +56,9 @@ public class CityGridAdapter extends RecyclerView.Adapter<CityNameViewHolder> {
         holder.setData(currentObj);
     }
 
-    // A method to find out the color of grid.
+    /*
+     *Method to find out the color of grid.
+     */
     private boolean isRed(int position) {
         int i = position % 4;
         if (i == 0 || i == 3) {

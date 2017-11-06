@@ -18,12 +18,16 @@ import java.util.List;
  */
 
 public class ViewPagerAdapter extends PagerAdapter {
-    // Field variables of class ViewPagerAdapter.
+    /*
+     *Field variables of class ViewPagerAdapter.
+      */
     private LayoutInflater mInflater;
     private Context mContext;
     private List<Bitmap> mList;
 
-    // Constructor of class ViewPagerAdapter.
+    /*
+     *Constructor of class ViewPagerAdapter.
+      */
     public ViewPagerAdapter(Context context, List<Bitmap> list) {
         this.mContext = context;
         this.mList = list;

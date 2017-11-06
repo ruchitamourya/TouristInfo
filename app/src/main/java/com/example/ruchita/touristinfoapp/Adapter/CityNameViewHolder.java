@@ -13,13 +13,17 @@ import com.example.ruchita.touristinfoapp.R;
  * Created by Ruchita on 22/9/17.
  */
 public class CityNameViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    // Field variables of Class CityNameViewHolder.
+    /*
+     *Field variables of Class CityNameViewHolder.
+     */
     CardView cardView;
     private TextView city_name;
     private City mCurrent;
     private ItemClickListener mItemClickListener;
 
-    // Constructor of Class CityViewHolder.
+    /*
+    *Constructor of Class CityViewHolder.
+     */
     public CityNameViewHolder(View itemView, ItemClickListener itemClickListener) {
         super(itemView);
         this.mItemClickListener = itemClickListener;
@@ -27,7 +31,9 @@ public class CityNameViewHolder extends RecyclerView.ViewHolder implements View.
         cardView = (CardView) itemView.findViewById(R.id.cardView);
     }
 
-    // A method to set the data of class City.
+    /*
+     *Method to set the data of class City.
+     */
     public void setData(City current) {
         this.city_name.setText(current.getCityName());
         this.mCurrent = current;

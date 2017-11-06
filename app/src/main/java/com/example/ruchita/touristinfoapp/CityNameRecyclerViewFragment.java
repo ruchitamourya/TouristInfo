@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 
 import com.example.ruchita.touristinfoapp.Adapter.CityGridAdapter;
 import com.example.ruchita.touristinfoapp.Data.DataProvider;
+import com.example.ruchita.touristinfoapp.Data.ExternalStorage;
+import com.example.ruchita.touristinfoapp.Data.FileDataProvider;
 import com.example.ruchita.touristinfoapp.Data.InternalStorage;
 import com.example.ruchita.touristinfoapp.Model.City;
 import com.google.gson.Gson;
@@ -25,23 +27,26 @@ import java.util.ArrayList;
  */
 
 public class CityNameRecyclerViewFragment extends Fragment implements ItemClickListener {
-    // Field variables of class CityNameRecyclerViewFragment.
+    /*
+     *Field variables of class CityNameRecyclerViewFragment.
+      */
     private FragmentManager mFragmentManager;
     private DataProvider mDataProvider;
-
-    // Default constructor of class CityNameRecyclerViewFragment.
+    /*
+     *Default constructor of class CityNameRecyclerViewFragment.
+      */
     public CityNameRecyclerViewFragment() {
-        mDataProvider = InternalStorage.getInstance(this.getContext());
+        mDataProvider = ExternalStorage.getInstance(this.getContext());
     }
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.city_name_recyclerview_fragment, container, false);
         setUpRecyclerView(view);
         mFragmentManager = getFragmentManager();
         return view;
     }
-
-    // A method to set recyclerView on CityNameRecyclerViewFragment class.
+    /*
+     * Method to set recyclerView on CityNameRecyclerViewFragment class.
+      */
     private void setUpRecyclerView(View v) {
         RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
         ArrayList<City> data = mDataProvider.getCities();
@@ -73,7 +78,9 @@ public class CityNameRecyclerViewFragment extends Fragment implements ItemClickL
         }
     }
 
-    // A method to open DetailActivity class.
+    /*
+     *Method to open DetailActivity class.
+     */
     private void openDetailsActivity(City current) {
         String data;
         Intent intent = new Intent(getActivity(), CityDetailPageActivity.class);
@@ -83,7 +90,9 @@ public class CityNameRecyclerViewFragment extends Fragment implements ItemClickL
         startActivity(intent);
     }
 
-    // A method to set a new fragment on CityNameRecyclerViewFragment class.
+    /*
+     *Method to set a new fragment on CityNameRecyclerViewFragment class.
+     */
     public void addNewCityFragment() {
         AddNewCityFragment fragment = new AddNewCityFragment();
         FragmentTransaction transaction = mFragmentManager.beginTransaction();

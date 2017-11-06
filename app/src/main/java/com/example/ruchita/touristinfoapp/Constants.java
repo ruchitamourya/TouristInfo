@@ -3,7 +3,9 @@ package com.example.ruchita.touristinfoapp;
 /**
  * Created by Ruchita on 05-10-2017.
  */
-// A class that hold all the constant values.
+/*
+ *Class that hold all the constant values.
+  */
 public class Constants {
     public static final String ADD_NEW_CITY = "Add City";
     public static final String FRAGMENT = "fragment";

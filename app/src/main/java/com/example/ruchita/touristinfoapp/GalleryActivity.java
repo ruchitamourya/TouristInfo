@@ -17,7 +17,9 @@ import com.google.gson.Gson;
 import java.util.List;
 
 public class GalleryActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener {
-    // Field variables of class GalleryActivity.
+    /*
+     *Field variables of class GalleryActivity.
+      */
     private ViewPager mViewPager;
     private ViewPagerAdapter mAdapter;
     private Toolbar mToolbar;

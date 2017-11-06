@@ -12,7 +12,9 @@ import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    // Field variables of MainActivity class .
+    /*
+     *Field variables of MainActivity class .
+     */
     private Button button_login;
     private EditText user_name;
     private EditText password;

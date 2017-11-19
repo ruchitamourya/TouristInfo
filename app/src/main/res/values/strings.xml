@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Tourist Info App</string>
+    <string name="app_name">Tourist Info</string>
     <string name="login_page">Log in </string>
     <string name="user_name">username</string>
     <string name="password">password</string>
@@ -15,5 +15,5 @@
     <string name="logout">Logout</string>
     <string name="title_activity_maps">Map</string>
     <string name="title">title</string>
-    <string name="data_not_available">Data not available...</string>
+    <string name="data_not_available">Data not available…</string>
 </resources>

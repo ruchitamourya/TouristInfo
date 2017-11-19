@@ -11,16 +11,15 @@ import java.util.ArrayList;
 /**
  * Created by Ruchita on 24/9/17.
  */
-/*
- *Class for all hardcoded data.
- */
+
+//Class for all hardcoded data.
+
 public class TestData implements DataProvider {
 
     private static ArrayList<City> mData;
 
-    /*
-     *Default constructor of class TestData.
-      */
+    //Default constructor of class TestData.
+
     public TestData() {
         mData = prepareCityList();
     }
@@ -58,24 +57,14 @@ public class TestData implements DataProvider {
         /*
          *Method to get the ArrayList of class CityDetail.
          */
-        int[] images = getImages();
         String[] desc = getdesc();
 
-        for (int i = 0; i < images.length; i++) {
+        for (int i = 0; i < desc.length; i++) {
             CityDetail cityDetail = new CityDetail();
             cityDetail.setDescription(desc[i]);
             dataList.add(cityDetail);
         }
         return dataList;
-    }
-
-    /*
-     *Method to get Array of images from drawable.
-     */
-    private static int[] getImages() {
-        int[] images = {0, R.drawable.mumbai, R.drawable.hyderabad, R.drawable.chennai,
-                R.drawable.kolkata, R.drawable.lucknow, R.drawable.ahmedabad, R.drawable.bangalor,};
-        return images;
     }
 
     /*
@@ -125,9 +114,9 @@ public class TestData implements DataProvider {
     private static ArrayList<ArrayList<FamousPlace>> getFamousPlacesData() {
         ArrayList<ArrayList<FamousPlace>> listOfData = new ArrayList<>();
 
-/*
- *Description variable hold a string value about famous places of cities.
-  */
+
+        //Description variable hold a string value about famous places of cities.
+
         String[][] description = {{"Red Fort has become a grand and attractive place.", "The India Gate, is a war memorial located astride the Rajpath in delhi.",
                 "Akshardham is a Hindu mandir, and a spiritual-cultural campus.", "The Lotus Temple is a Bahá'í House of Worship that was dedicated in December 1986.",
                 "The Masjid-i Jahān-Numā, commonly known as the Jama Masjid of Delhi, is one of the largest mosques in India.",
@@ -137,21 +126,20 @@ public class TestData implements DataProvider {
                 "Mahatma Jyotiba Phule Mandi is one of South Mumbai's most famous markets.", "Elephanta Caves are a network of sculpted caves located on Elephanta " +
                 "Island,in Mumbai.", "The Rajabai Clock Tower is located in the confines of the Fort campus of the University of Mumbai.", "The Shree Siddhivinayak Ganapati Mandir " +
                 "is a Hindu temple dedicated to Lord Shri Ganesh.", "The Taj Mahal Palace Hotel is a Heritage Grand class five-star hotel in the Colaba region of Mumbai."}};
-/*
- *Variable title hold array of string value for famous places.
-  */
+
+        //Variable title hold array of string value for famous places.
+
         String[][] title = {{"Red Fort", "India Gate", "Akshardham", "Lotus Temple", "Jama Masjid",
                 "Jantar Mantar", "Qutub Minar", "Rashtrapati Bhawan"}, {"Gateway of India", "Marine Drive ", "Chhatrapati Shivaji Terminus",
                 "Crawford Market", "Elephanta" +
                 " Caves", "Rajabai Clock Tower", "Siddhivinayak Temple", "Tajmahal Palace"}};
-/*
- *Variable latitude hold array of latitude value of famous places.
-  */
+
+        //Variable latitude hold array of latitude value of famous places.
+
         double[][] latitude = {{28.6562, 28.6162, 28.6127, 28.5535, 28.6507, 28.6271, 28.5244, 28.6144}, {18.9220, 18.9430712, 18.9398, 18.9477, 18.9633, 18.9298, 19.0169, 18.9217}};
 
-/*
- *Variable latitude hold array of longitude value of famous places.
-  */
+
+        //Variable latitude hold array of longitude value of famous places.
         double[][] longitude = {{77.2410, 77.2295, 77.2773, 77.2588, 77.2334, 77.2166, 77.1855, 77.1996}, {72.8347, 72.8230638, 72.8355, 72.8342, 72.9315, 72.8301, 72.8303, 72.8330}};
 
         for (int i = 0; i < description.length; i++) {
@@ -159,7 +147,6 @@ public class TestData implements DataProvider {
                 ArrayList<FamousPlace> innerList = new ArrayList<>();
                 for (int j = 0; j < description[0].length; j++) {
                     FamousPlace famousPlace = new FamousPlace();
-                    //famousPlace.setImgResourceId(famousPlacesOfCities[i][j]);
                     famousPlace.setDescription(description[i][j]);
                     famousPlace.setTitle(title[i][j]);
                     famousPlace.setLatitude(latitude[i][j]);

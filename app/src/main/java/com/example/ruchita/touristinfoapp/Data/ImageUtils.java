@@ -121,7 +121,9 @@ public class ImageUtils {
         }
     }
 
-    // A method to save the cities images.
+    /*
+     *Method to save the cities images.
+      */
     public static String saveCityImage(Context context, City city, Bitmap bitmap) {
         String imagePath = city.getCityId() + "/city.jpeg";
         try {

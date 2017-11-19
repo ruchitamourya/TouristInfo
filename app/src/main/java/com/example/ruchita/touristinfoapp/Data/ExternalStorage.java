@@ -2,6 +2,7 @@ package com.example.ruchita.touristinfoapp.Data;
 
 import android.content.Context;
 import android.os.Environment;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,22 +32,23 @@ public class ExternalStorage extends FileDataProvider {
         if (isExternalStorageWritable()) {
             File myExternalFile = new File(mContext.getExternalFilesDir(filepath), CITY_FILE);
             FileOutputStream outputStream = new FileOutputStream(myExternalFile);
-            return outputStream;
-        } else {
-            return null;
+                return outputStream;
+            } else {
+                return null;
+            }
         }
-    }
+
 
     @Override
     protected FileInputStream getFileInputStream() throws FileNotFoundException {
         if (isExternalStorageWritable() || isExternalStorageReadOnly()) {
             File myExternalFile = new File(mContext.getExternalFilesDir(filepath), CITY_FILE);
-            FileInputStream fis = new FileInputStream(myExternalFile);
-            return fis;
-        } else {
-            return null;
+                FileInputStream fis = new FileInputStream(myExternalFile);
+                return fis;
+            } else {
+                return null;
+            }
         }
-    }
 
     /*
      *Checks if external storage is available for read and write.

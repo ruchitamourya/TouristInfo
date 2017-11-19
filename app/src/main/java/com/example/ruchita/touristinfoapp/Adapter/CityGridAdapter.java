@@ -17,9 +17,8 @@ import java.util.List;
  */
 
 public class CityGridAdapter extends RecyclerView.Adapter<CityNameViewHolder> {
-    /*
-     *Field variables of class CityGridAdapter.
-      */
+
+    //Field variables of class CityGridAdapter.
     private List<City> mData;
     private LayoutInflater mInflater;
     private Context mContext;

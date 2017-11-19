@@ -36,16 +36,8 @@ import static android.app.Activity.RESULT_OK;
  */
 
 public class AddNewCityFragment extends Fragment implements View.OnClickListener {
-    /*
-    @Constant RESULT_LOAD_IMAGE an int type constant to hold an int value.
-    @Constant MY_PERMISSION_REQUEST_READ_EXTERNAL_STORAGE an int constant to hold an int value.
-     */
     private static final int RESULT_LOAD_IMAGE = 1;
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 0;
-    /*
-    @Button btn_add_img a button type variable.
-    @ImageView add_img a imageView type variable.
-    */
     private Button btn_add_img;
     private ImageView add_img;
     private Button saveData;
@@ -57,9 +49,8 @@ public class AddNewCityFragment extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.add_new_city_fragment, container, false);
-/*
- *initialization of variables.
-  */
+
+        //initialization of variables.
         add_img = (ImageView) view.findViewById(R.id.add_img);
         btn_add_img = (Button) view.findViewById(R.id.btn_add_img);
         btn_add_img.setOnClickListener(this);

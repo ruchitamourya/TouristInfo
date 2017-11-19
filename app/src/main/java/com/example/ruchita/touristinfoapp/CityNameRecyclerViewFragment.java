@@ -27,23 +27,25 @@ import java.util.ArrayList;
  */
 
 public class CityNameRecyclerViewFragment extends Fragment implements ItemClickListener {
-    /*
-     *Field variables of class CityNameRecyclerViewFragment.
-      */
+
+    //Field variables of class CityNameRecyclerViewFragment.
+
     private FragmentManager mFragmentManager;
     private DataProvider mDataProvider;
-    /*
-     *Default constructor of class CityNameRecyclerViewFragment.
-      */
+
+    //Default constructor of class CityNameRecyclerViewFragment.
+
     public CityNameRecyclerViewFragment() {
         mDataProvider = ExternalStorage.getInstance(this.getContext());
     }
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.city_name_recyclerview_fragment, container, false);
         setUpRecyclerView(view);
         mFragmentManager = getFragmentManager();
         return view;
     }
+
     /*
      * Method to set recyclerView on CityNameRecyclerViewFragment class.
       */

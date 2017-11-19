@@ -27,7 +27,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(checkPermission()) {
+        if (checkPermission()) {
             openNextActivity();
         }
     }
@@ -46,7 +46,9 @@ public class SplashActivity extends AppCompatActivity {
         finish();
     }
 
-    // A method to check if login or not.
+    /*
+     *Method to check if login or not.
+      */
     private boolean checkLogin() {
         SharedPreferences sharedPreferences = this.getSharedPreferences(Constants.SHARED_PREF_KEY, MODE_PRIVATE);
         boolean loggedIn = sharedPreferences.getBoolean(Constants.IS_LOGGED_IN, false);
@@ -83,12 +85,12 @@ public class SplashActivity extends AppCompatActivity {
                     builder.setMessage("We need to save data of cities on your external storage. Without this permission, app can't work.\n" +
                             "Please provide the access.")
                             .setTitle("Permission Request")
-                    .setNegativeButton("Quit", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
-                        }
-                    }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            .setNegativeButton("Quit", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    finish();
+                                }
+                            }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             checkPermission();

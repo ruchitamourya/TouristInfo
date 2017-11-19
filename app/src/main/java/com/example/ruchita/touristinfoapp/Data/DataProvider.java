@@ -7,9 +7,8 @@ import java.util.ArrayList;
 /**
  * Created by Ruchita on 15/10/17.
  */
-/*
- *Interface to provide the data of cities.
-  */
+
+//Interface to provide the data of cities.
 public interface DataProvider {
     /*
      *Method to get the cities.

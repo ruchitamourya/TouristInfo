@@ -15,8 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="1dp"
         android:layout_margin="1dp"
+        android:layout_marginBottom="1dp"
         android:orientation="horizontal">
 
         <Button
@@ -28,7 +28,7 @@
             android:padding="10dp"
             android:text="@string/famous_places"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="@dimen/button_text" />
 
         <Button
             android:id="@+id/gallery"
@@ -39,7 +39,7 @@
             android:background="@color/colorTransparent2"
             android:text="@string/gallery"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="@dimen/button_text"  />
 
     </LinearLayout>
 
@@ -47,6 +47,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/toolbar"
         android:orientation="vertical">
@@ -55,10 +56,10 @@
             android:id="@+id/city_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxHeight="200dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
             android:layout_marginTop="5dp"
+            android:adjustViewBounds="true"
+            android:maxHeight="200dp"
+            android:scaleType="fitXY"
             android:src="@drawable/city" />
 
         <TextView
@@ -68,15 +69,19 @@
             android:layout_marginTop="5dp"
             android:text="@string/about_city"
             android:textColor="@android:color/black"
-            android:textSize="25sp" />
+            android:textSize="@dimen/heading_text" />
 
-        <TextView
-            android:id="@+id/details"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="@string/description"
-            android:textSize="17sp"
-            android:textColor="@android:color/black"/>
+            android:layout_marginStart="10dp">
+            <TextView
+                android:id="@+id/details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/description"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/description_text" />
+        </ScrollView>
     </LinearLayout>
 </RelativeLayout>

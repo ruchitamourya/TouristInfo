@@ -18,9 +18,8 @@ import static android.content.Context.MODE_PRIVATE;
  */
 
 public class CommonUtils {
-    /*
-     *@Constant LAUNCH_COUNT a STRING type constant to hold a string value.
-      */
+
+    //@Constant LAUNCH_COUNT a STRING type constant to hold a string value.
     private static final String LAUNCH_COUNT = "launchCount";
 
     /*

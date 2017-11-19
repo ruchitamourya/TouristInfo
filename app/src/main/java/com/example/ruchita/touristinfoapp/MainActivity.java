@@ -12,9 +12,8 @@ import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    /*
-     *Field variables of MainActivity class .
-     */
+
+    //Field variables of MainActivity class .
     private Button button_login;
     private EditText user_name;
     private EditText password;
@@ -37,8 +36,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         Intent intent = new Intent(MainActivity.this, CityListActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        if (user_name.getText().toString().equals("user") &&
-                password.getText().toString().equals("1234")) {
+        if (user_name.getText().toString().equals("user123@example.com") &&
+                password.getText().toString().equals("User@1234")) {
             SharedPreferences sharedPreferences = getSharedPreferences(Constants.SHARED_PREF_KEY, MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean(Constants.IS_LOGGED_IN, true);

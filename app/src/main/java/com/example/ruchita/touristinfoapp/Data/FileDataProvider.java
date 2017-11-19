@@ -1,7 +1,9 @@
 package com.example.ruchita.touristinfoapp.Data;
 
 import android.content.Context;
+import android.os.Environment;
 import android.util.Log;
+import android.view.View;
 
 import com.example.ruchita.touristinfoapp.Model.City;
 import com.google.gson.Gson;
@@ -20,25 +22,23 @@ import java.util.ArrayList;
 /**
  * Created by Ruchita on 21-10-2017.
  */
-/*
- *Class to store data.
-  */
+
+//Class to store data.
+
 public abstract class FileDataProvider implements DataProvider {
     private static final String TAG = FileDataProvider.class.getSimpleName();
-    /*
-     *@Constant CITY_FILE is a string type to hold a string value.
-     */
+
+    // CITY_FILE is a string type constant to hold a string value.
     protected static String CITY_FILE = "cities.json";
-    /*
-     *Field variables of class FileDataProvider.
-     */
+
+    //Field variables of class FileDataProvider.
+
     protected Context mContext;
     protected static FileDataProvider mInstance;
     private ArrayList<City> mCities;
 
-    /*
-     *Constructor of class FileDataProvider.
-      */
+
+    //Constructor of class FileDataProvider.
     protected FileDataProvider(Context context) {
         mContext = context;
         mCities = getCitiesFromFile();
@@ -87,9 +87,16 @@ public abstract class FileDataProvider implements DataProvider {
         try {
             fos = openFileOutput();
             fos.write(string.getBytes());
-            fos.close();
         } catch (IOException e) {
             Log.e(TAG, "saveCitiesToFile", e);
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
@@ -128,4 +135,5 @@ public abstract class FileDataProvider implements DataProvider {
         reader.close();
         return sb.toString();
     }
+
 }

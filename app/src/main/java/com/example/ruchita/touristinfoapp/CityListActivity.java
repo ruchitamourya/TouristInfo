@@ -11,9 +11,8 @@ import android.view.MenuItem;
 import com.example.ruchita.touristinfoapp.Data.CommonUtils;
 
 public class CityListActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener {
-    /*
-     *Field variables of class CityListActivity.
-     */
+
+    //Field variables of class CityListActivity.
     private FragmentManager mFragmentManager;
     private Toolbar mToolbar;
 

@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 /**
- * Created by chandan on 5/11/17.
+ * Created by Ruchita on 5/11/17.
  */
 
 public class InternalStorage extends FileDataProvider {
@@ -25,9 +25,6 @@ public class InternalStorage extends FileDataProvider {
         return mContext.openFileInput(CITY_FILE);
     }
 
-    /*
-
-     */
     public static FileDataProvider getInstance(Context context) {
         if (mInstance == null) {
             mInstance = new InternalStorage(context.getApplicationContext());

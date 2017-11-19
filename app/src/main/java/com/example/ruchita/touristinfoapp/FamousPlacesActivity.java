@@ -20,9 +20,8 @@ import com.google.gson.Gson;
 
 public class FamousPlacesActivity extends AppCompatActivity implements ItemClickListenerOfFamousPlace,
         Toolbar.OnMenuItemClickListener {
-    /*
-     *Field variable of class FamousPlacesActivity.
-      */
+
+    //Field variable of class FamousPlacesActivity.
     private Toolbar mToolbar;
 
     @Override
@@ -34,7 +33,7 @@ public class FamousPlacesActivity extends AppCompatActivity implements ItemClick
         mToolbar.showOverflowMenu();
         mToolbar.setOnMenuItemClickListener(this);
         Gson gson = new Gson();
-        String data = getIntent().getStringExtra(Constants.FAMOUSPLACES_DATA);
+        String data = getIntent().getStringExtra(Constants.FAMOUS_PLACES_DATA);
         City city = gson.fromJson(data, City.class);
         getSupportActionBar().setTitle(city.getCityName());
         if (city.getFamousPlaceList() != null && city.getFamousPlaceList().size() > 0) {

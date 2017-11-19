@@ -2,6 +2,7 @@ package com.example.ruchita.touristinfoapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -17,9 +18,7 @@ import com.example.ruchita.touristinfoapp.Model.City;
 import com.google.gson.Gson;
 
 public class CityDetailPageActivity extends AppCompatActivity implements View.OnClickListener, Toolbar.OnMenuItemClickListener {
-    /*
-     * Declaring variables like ImageView,TextView,Button and Toolbar
-     */
+    // Declaring variables like ImageView,TextView,Button and Toolbar
     private ImageView city_image;
     private TextView city_details;
     private Button famous_places;
@@ -31,31 +30,25 @@ public class CityDetailPageActivity extends AppCompatActivity implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_detail_page);
-        /*
-         *Initializing variables through findViewById.
-         */
 
+        //Initializing variables through findViewById.
         city_image = (ImageView) findViewById(R.id.city_image);
         city_details = (TextView) findViewById(R.id.details);
         famous_places = (Button) findViewById(R.id.famous_places);
         gallery = (Button) findViewById(R.id.gallery);
-        /*
-         *Applying clickListener on Buttons.
-         */
 
+        //Applying clickListener on Buttons.
         famous_places.setOnClickListener(this);
         gallery.setOnClickListener(this);
-
-        /*
-         *Method call to populate the data of city detail.
-         */
-        populateData();
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         mToolbar.showOverflowMenu();
         mToolbar.setOnMenuItemClickListener(this);
-        //  populateData();
+        /*
+         *Method call to populate the data of city detail.
+         */
+        populateData(getSupportActionBar());
     }
 
     @Override
@@ -67,11 +60,11 @@ public class CityDetailPageActivity extends AppCompatActivity implements View.On
     /*
      *Method to populate the data of city detail.
      */
-    public void populateData() {
+    public void populateData(ActionBar actionBar) {
         Gson gson = new Gson();
         mData = getIntent().getStringExtra(Constants.CITY_DATA);
         City city = gson.fromJson(mData, City.class);
-        //getSupportActionBar().setTitle(city.getCityName());
+        actionBar.setTitle(city.getCityName());
         city_image.setImageBitmap(ImageUtils.getCityImage(this, city));
         city_details.setText(city.getCityDetail().getDescription());
     }
@@ -80,11 +73,11 @@ public class CityDetailPageActivity extends AppCompatActivity implements View.On
     public void onClick(View v) {
         if (v.getId() == R.id.famous_places) {
             Intent intent = new Intent(CityDetailPageActivity.this, FamousPlacesActivity.class);
-            intent.putExtra(Constants.FAMOUSPLACES_DATA, mData);
+            intent.putExtra(Constants.FAMOUS_PLACES_DATA, mData);
             startActivity(intent);
         } else if (v.getId() == R.id.gallery) {
             Intent intent = new Intent(CityDetailPageActivity.this, GalleryActivity.class);
-            intent.putExtra(Constants.FAMOUSPLACES_DATA, mData);
+            intent.putExtra(Constants.FAMOUS_PLACES_DATA, mData);
             startActivity(intent);
         }
     }

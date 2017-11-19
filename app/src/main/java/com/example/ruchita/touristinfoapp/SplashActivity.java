@@ -82,23 +82,22 @@ public class SplashActivity extends AppCompatActivity {
                     //Show user a dialog that we can't move ahead without this permission.
                     // On 'OK' check permission again, on 'quit' close the app
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    builder.setMessage("We need to save data of cities on your external storage. Without this permission, app can't work.\n" +
-                            "Please provide the access.")
-                            .setTitle("Permission Request")
-                            .setNegativeButton("Quit", new DialogInterface.OnClickListener() {
+                    builder.setMessage(getString(R.string.permission_request_text))
+                            .setTitle(R.string.permission_request_title)
+                            .setNegativeButton(R.string.quit, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     finish();
                                 }
-                            }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            }).setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
                             checkPermission();
                         }
                     });
                     AlertDialog dialog = builder.create();
                     dialog.show();
-
                 }
             }
         }

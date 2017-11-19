@@ -16,4 +16,8 @@
     <string name="title_activity_maps">Map</string>
     <string name="title">title</string>
     <string name="data_not_available">Data not available…</string>
+    <string name="permission_request_text">We need to save data of cities on your external storage. Without this permission, app can\'t work.\n</string>
+    <string name="permission_request_title">Permission Request</string>
+    <string name="quit">Quit</string>
+    <string name="ok">OK</string>
 </resources>

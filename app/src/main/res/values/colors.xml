@@ -6,4 +6,5 @@
     <color name="colorTransparent1">#067e8b</color>
     <color name="colorTransparent2">#02afb5</color>
     <color name="colorTransparent3">#80ff80f7</color>
+    <color name="button_color">#0097A7</color>
 </resources>

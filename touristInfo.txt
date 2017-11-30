@@ -1,0 +1,18 @@
+GitHub Url :   
+https://github.com/ruchitamourya/TouristInfo.git   
+
+
+
+APK   
+https://drive.google.com/open?id=1yeVc6GHxlkXIRWmq2Xb8Cb2CS9b49zBu   
+
+
+
+Notes:
+
+1. On Login page, only login button is working. 'register', 'forget password', 'social logins' are TODO.
+
+2. Only Delhi and Mumbai has complete data for demo. Other cities does not have complete data.
+
+3. User Name : user123@example.com   Password: User@1234
+
